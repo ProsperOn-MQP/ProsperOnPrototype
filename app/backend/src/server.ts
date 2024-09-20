@@ -28,10 +28,16 @@ const ChatLogModel = mongoose.model<ChatLog>("ChatLog", chatLogSchema);
 
 app.post("/api/chat", async (req: Request, res: Response) => {
   const { message } = req.body;
-  const chatLog = new ChatLogModel({ message });
+
+  const chatLog = new ChatLogModel({ message, response: "" });
   await chatLog.save();
 
-  res.json({ id: chatLog._id });
+  const botResponse = `Your message is stored in id: ${chatLog._id}`;
+
+  chatLog.response = botResponse;
+  await chatLog.save();
+
+  res.json(botResponse);
 });
 
 app.listen(5000, () => {
