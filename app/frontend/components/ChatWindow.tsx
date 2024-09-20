@@ -10,6 +10,8 @@ const Chatbot: React.FC = () => {
   const [chatLogs, setChatLogs] = useState<ChatLog[]>([]);
 
   const handleSend = async () => {
+    if (message.trim() === "") return;
+
     try {
       const response = await fetch("http://localhost:5000/api/chat", {
         method: "POST",
@@ -28,6 +30,12 @@ const Chatbot: React.FC = () => {
       setMessage("");
     } catch (error) {
       console.error("Error sending message:", error);
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSend();
     }
   };
 
@@ -87,6 +95,7 @@ const Chatbot: React.FC = () => {
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={handleKeyDown}
           style={{
             color: "#1a1a1a",
             backgroundColor: "#fff",
