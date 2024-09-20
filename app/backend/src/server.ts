@@ -40,6 +40,15 @@ app.post("/api/chat", async (req: Request, res: Response) => {
   res.json(botResponse);
 });
 
+app.get("/chat/all", async (req: Request, res: Response) => {
+  try {
+    const chatLogs = await ChatLogModel.find();
+    res.json(chatLogs);
+  } catch (error) {
+    console.error("UHHH PROBLEM:", error);
+    res.status(500).json({ error: "FAILED UHH" });
+  }
+});
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });

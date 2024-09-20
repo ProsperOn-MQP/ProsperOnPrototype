@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import EachChat from "./EachChat";
 
 interface ChatLog {
   message: string;
@@ -8,6 +9,23 @@ interface ChatLog {
 const Chatbot: React.FC = () => {
   const [message, setMessage] = useState<string>("");
   const [chatLogs, setChatLogs] = useState<ChatLog[]>([]);
+
+  useEffect(() => {
+    const fetchChatLogs = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/chat/all");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const initialLogs = await response.json();
+        setChatLogs(initialLogs);
+      } catch (error) {
+        console.error("Error fetching chat logs:", error);
+      }
+    };
+
+    fetchChatLogs();
+  }, []);
 
   const handleSend = async () => {
     if (message.trim() === "") return;
@@ -22,14 +40,14 @@ const Chatbot: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("UHHHHH");
       }
 
       const botResponse = await response.text();
       setChatLogs([...chatLogs, { message, response: botResponse }]);
       setMessage("");
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.error("cant send message:", error);
     }
   };
 
@@ -48,8 +66,8 @@ const Chatbot: React.FC = () => {
         bottom: "20px",
         right: "20px",
         border: "1px solid #ccc",
-        borderRadius: "8px",
-        backgroundColor: "#fff",
+        borderRadius: "4px",
+        backgroundColor: "#eee",
         boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
         overflowY: "auto",
         color: "#1a1a1a",
@@ -59,35 +77,7 @@ const Chatbot: React.FC = () => {
     >
       <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
         {chatLogs.map((log, index) => (
-          <div key={index} style={{ textAlign: "left", marginBottom: "10px" }}>
-            <div
-              style={{
-                wordWrap: "break-word",
-                maxWidth: "80%",
-                backgroundColor: "#d1e7dd",
-                padding: "8px",
-                borderRadius: "4px",
-                marginLeft: "auto",
-              }}
-            >
-              <div style={{ fontSize: "8pt", textAlign: "right" }}>
-                Username
-              </div>{" "}
-              {log.message}
-            </div>
-            <div
-              style={{
-                wordWrap: "break-word",
-                maxWidth: "80%",
-                backgroundColor: "#f0f0f0",
-                padding: "8px",
-                borderRadius: "4px",
-                marginBottom: "5px",
-              }}
-            >
-              <div style={{ fontSize: "8pt" }}>Bot:</div> {log.response}
-            </div>
-          </div>
+          <EachChat key={index} message={log.message} response={log.response} />
         ))}
       </div>
       <div style={{ display: "flex", marginTop: "10px", padding: "10px" }}>
