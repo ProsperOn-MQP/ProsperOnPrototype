@@ -1,3 +1,6 @@
+# Prevents environmental files from being uploaded to git for security purposes
+.env
+
 # Logs
 logs
 *.log
