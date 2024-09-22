@@ -1,5 +1,10 @@
-# Prevents environmental files from being uploaded to git for security purposes
+# Defines files that Git should not be tracked.
+
+# Environmental
 .env
+
+# Dependencies 
+*/node_modules
 
 # Logs
 logs
