@@ -1,7 +1,10 @@
 import express from "express";
-import { config } from "dotenv";
-config();
+import dotenv from "dotenv";
 import { connectToDatabase } from "./db/connection.js";
+
+// Load environmental variables from env file
+dotenv.config({path: '../../.env'});
+console.log()
 
 const app = express();
 
