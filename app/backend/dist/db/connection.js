@@ -1,8 +1,8 @@
 import { connect, disconnect } from "mongoose";
 async function connectToDatabase() {
     try {
-        console.log(process.env.DB_URL);
-        await connect(process.env.DB_URL);
+        console.log(process.env.DATABASE_URI);
+        await connect(process.env.DATABASE_URI);
     }
     catch (error) {
         console.log(error);

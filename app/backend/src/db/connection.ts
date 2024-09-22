@@ -1,13 +1,12 @@
 import { connect, disconnect } from "mongoose";
 
-async function connectToDatabase()
+async function connectToDatabase() 
 {
-    try 
-    {
-        console.log(process.env.DB_URL)
-        await connect(process.env.DB_URL);
+    try {
+        console.log(process.env.DATABASE_URI)
+        await connect(process.env.DATABASE_URI);
     }
-    catch (error)
+    catch (error) 
     {
         console.log(error);
         throw new Error("Cannot connect to database");
