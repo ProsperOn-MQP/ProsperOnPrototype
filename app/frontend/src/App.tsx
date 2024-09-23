@@ -1,12 +1,15 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './components/LoginPage';
-import MainPage from './components/MainPage';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import LoginPage from "./components/LoginPage";
+import MainPage from "./components/MainPage";
 
-import './App.css'
+import "./App.css";
 
 function App() {
-
   return (
     <>
       <Router>
@@ -17,7 +20,7 @@ function App() {
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
