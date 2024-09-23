@@ -1,4 +1,4 @@
-// Creates an express application that can handle client requests
+// Creates an express application
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
