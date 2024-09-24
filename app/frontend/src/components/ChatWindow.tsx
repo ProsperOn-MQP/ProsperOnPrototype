@@ -31,13 +31,17 @@ const Chatbot: React.FC = () => {
     if (message.trim() === "") return;
 
     try {
-      const response = await fetch("http://localhost:5000/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message }),
-      });
+      const response = await fetch(
+        //"http://localhost:5000/api/pychat"
+        "http://localhost:5000/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("UHHHHH");
