@@ -4,7 +4,8 @@
   "scripts": {
     "client": "cd app/frontend && npm run dev",
     "server": "cd app/backend && npm run build && node .",
-    "app": "concurrently \"npm run client\" \"npm run server\""
+    "python": "cd app/backend/src/python && python app.py",
+    "app": "concurrently \"npm run client\" \"npm run server\" \"npm run python\""
   },
   "author": "Andy Truong",
   "license": "ISC",
