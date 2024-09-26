@@ -11,9 +11,14 @@ function MainPage() {
 
   return (
     <>
-      <div>
+      <div className="bg-wpi-gray w-screen h-screen flex justify-center items-center">
         <h1>Main Page</h1>
-        <button type="button" id="logoutButton" onClick={onLogout}>
+        <button
+          className="bg-wpi-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+          id="logoutButton"
+          onClick={onLogout}
+        >
           Logout
         </button>
         <div
