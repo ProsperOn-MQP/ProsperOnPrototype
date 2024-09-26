@@ -11,16 +11,23 @@ function MainPage() {
 
   return (
     <>
-      <div className="bg-wpi-gray w-screen h-screen flex justify-center items-center">
-        <h1>Main Page</h1>
+      {/* top nav bar w logout + about 
+    mainpage h1
+    btm r chatbot popup btn*/}
+      <header className="bg-wpi-red inset-x-0 top-0 h-16 px-8 grid justify-items-end items-center">
         <button
-          className="bg-wpi-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-black hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
           type="button"
           id="logoutButton"
           onClick={onLogout}
         >
           Logout
         </button>
+      </header>
+      
+      <div className="bg-wpi-gray w-screen h-screen flex justify-center">
+        <h1 className="text-3xl font-bold mb-4 text-center">Main Page</h1>
+
         <div
           style={{
             position: "absolute",
