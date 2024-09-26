@@ -13,3 +13,4 @@ def process_message():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001) 
+    print("Python backend running")
