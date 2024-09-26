@@ -32,8 +32,9 @@ const Chatbot: React.FC = () => {
 
     try {
       const response = await fetch(
-        //"http://localhost:5000/api/pychat"
-        "http://localhost:5000/api/chat",
+        //"http://localhost:5001/api/process",
+        "http://localhost:5000/api/pychat",
+        //"http://localhost:5000/api/chat",
         {
           method: "POST",
           headers: {
