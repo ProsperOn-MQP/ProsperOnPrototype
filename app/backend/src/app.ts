@@ -54,4 +54,33 @@ app.get("/hello", (req, res, next) => {
   return res.send("Hello");
 });
 
+app.post("/api/pychat", async (req: Request, res: Response) => {
+  const { message } = req.body;
+
+  try {
+    const pythonResponse = await fetch("http://localhost:5001/api/process", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message }),
+    });
+
+    const responseData = await pythonResponse.json();
+
+    const chatLog = new ChatLogModel({
+      message,
+      response: responseData.response,
+    });
+    await chatLog.save();
+
+    res.json({ response: responseData.response });
+  } catch (error) {
+    console.error("Error while calling Python backend:", error);
+    res
+      .status(500)
+      .json({ error: "Failed to communicate with Python backend." });
+  }
+});
+
 export default app;
