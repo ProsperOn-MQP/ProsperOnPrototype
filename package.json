@@ -11,5 +11,8 @@
   "description": "Specifies dependencies for the entire application",
   "dependencies": {
     "concurrently": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
