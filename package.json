@@ -2,6 +2,7 @@
   "name": "prosperonprototype",
   "version": "1.0.0",
   "scripts": {
+    "install:all": "npm install && cd app/frontend && npm install && cd ../backend && npm install",
     "client": "cd app/frontend && npm run dev",
     "server": "cd app/backend && npm run build && node .",
     "app": "concurrently \"npm run client\" \"npm run server\""
@@ -11,8 +12,5 @@
   "description": "Specifies dependencies for the entire application",
   "dependencies": {
     "concurrently": "^9.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.7"
   }
 }
