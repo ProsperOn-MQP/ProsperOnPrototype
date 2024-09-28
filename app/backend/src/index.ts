@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import { connectToDatabase } from "./db/connection.js";
 
 // Load environmental variables from env file
-dotenv.config({ path: "../../.env" });
+dotenv.config({ path: "../../../.env" });
 
 // Set up: Connect to DB and start HTTP server
 connectToDatabase()
