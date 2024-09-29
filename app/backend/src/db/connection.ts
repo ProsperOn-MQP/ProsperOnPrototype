@@ -1,28 +1,21 @@
+// Defines logic to connect and disconnect from database
 import { connect, disconnect } from "mongoose";
 
-async function connectToDatabase() 
-{
+async function connectToDatabase() {
     try {
-        console.log(process.env.DATABASE_URI)
         await connect(process.env.DATABASE_URI);
     }
-    catch (error) 
-    {
+    catch (error) {
         console.log(error);
-        throw new Error("Cannot connect to database");
     }
 }
 
-async function disconnectFromDatabase() 
-{
-    try
-    {
+async function disconnectFromDatabase() {
+    try {
         await disconnect();
     }
-    catch (error)
-    {
+    catch (error) {
         console.log(error);
-        throw new Error("Cannot disconnect from database");
     }
 }
 
