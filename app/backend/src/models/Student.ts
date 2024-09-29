@@ -1,7 +1,7 @@
 // Defines an object that can be used to add a user profile to database
 import { Schema, model } from "mongoose";
 
-const userSchema = new Schema({
+const studentSchema = new Schema({
     name: {
         firstName: {
             type: String,
@@ -28,6 +28,6 @@ const userSchema = new Schema({
     }
 });
 
-const User = model("User", userSchema);
+const User = model("Student", studentSchema);
 
 export default User;
