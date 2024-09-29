@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,14 +9,33 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     // Login auth here
-    if (username === "user" && password === "pass") {
-      navigate("/main");
-    } else {
+    try {
+      const response = await axios.post("http://localhost:5001/login", {
+        email: username, 
+        password: password
+      }, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      if (response.data.success == true) {
+        navigate("/main");
+      }
+      else {
+        alert("Wrong username or password");
+      }
+    }
+    catch (error) {
       alert("Wrong username or password");
     }
+    // if (username === "user" && password === "pass") {
+    //   navigate("/main");
+    // } else {
+    //   alert("Wrong username or password");
+    // }
   };
 
   return (

@@ -5,10 +5,11 @@ import authenticationRouter from "./routers/authentication.js";
 // import bodyParser from "body-parser";
 // import dotenv from "dotenv";
 // import mongoose from "mongoose";
-// import cors from "cors";
+import cors from "cors";
 
 const app = express();
 app.use(json()); // Converts request bodies to json format.
+app.use(cors());
 app.use("/", authenticationRouter);
 
 export default app;

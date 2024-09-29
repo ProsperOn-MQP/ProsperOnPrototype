@@ -11,7 +11,7 @@ dotenv.config({ path: "../../.env" });
 connectToDatabase()
   .then(() => {
     initializeDatabase();
-    app.listen(5000, () =>
+    app.listen(5001, () =>
       console.log("Server running and connected to database")
     );
   })
