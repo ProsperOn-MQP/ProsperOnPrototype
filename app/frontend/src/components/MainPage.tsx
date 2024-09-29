@@ -24,7 +24,7 @@ function MainPage() {
   return (
     <div>
       <FocusContext userId="12" />
-      <SelectionTracker onRightClick={handleSelection} />{" "}
+      <SelectionTracker onSelectionChange={handleSelection} />
       <div className="bg-white text-black w-full h-full whitespace-normal break-words">
         <header className="bg-wpi-red inset-x-0 top-0 h-16 px-8 grid justify-items-end items-center">
           <button

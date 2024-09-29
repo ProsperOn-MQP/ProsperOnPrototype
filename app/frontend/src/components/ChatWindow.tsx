@@ -61,7 +61,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
     } else if (event.key === "Tab") {
       event.preventDefault();
       if (suggestion) {
-        setMessage(`tell me about ${suggestion}`);
+        setMessage(`Tell me about ${suggestion}`);
       }
     }
   };
