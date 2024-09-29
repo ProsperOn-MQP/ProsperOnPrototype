@@ -8,7 +8,6 @@ const SelectionTracker: React.FC<SelectionTrackerProps> = ({
   onSelectionChange,
 }) => {
   const extractData = (target: Node): string => {
-    // If the target is a text node, get its parent element
     const element =
       target.nodeType === Node.TEXT_NODE
         ? target.parentElement
@@ -36,7 +35,7 @@ const SelectionTracker: React.FC<SelectionTrackerProps> = ({
 
       if (selectedElement && selectedElement.textContent?.trim()) {
         const extractedData = extractData(selectedElement);
-        onSelectionChange(extractedData); // Pass the extracted data to the parent component
+        onSelectionChange(extractedData);
       }
     }
   };
@@ -49,7 +48,7 @@ const SelectionTracker: React.FC<SelectionTrackerProps> = ({
     };
   }, []);
 
-  return null; // This component does not render anything visible
+  return null;
 };
 
 export default SelectionTracker;
