@@ -1,6 +1,6 @@
-// Creates an express application
-import express from "express";
-import Student from "./models/Student.js";
+// Creates an router for the overall application
+import express, { json } from "express";
+import authenticationRouter from "./routers/authentication.js";
 // import express, { Request, Response } from "express";
 // import bodyParser from "body-parser";
 // import dotenv from "dotenv";
@@ -8,25 +8,8 @@ import Student from "./models/Student.js";
 // import cors from "cors";
 
 const app = express();
-app.use(express.json()); // Converts body of request to JSON.
-
-// Validates the credentials of a user
-app.post("/login", async (req, res) => {
-  const foundStudent = await Student.findOne({email: req.body.email}).exec();
-
-  if (foundStudent != undefined) {
-    if (foundStudent.email == req.body.email && foundStudent.password == req.body.password) {
-      return res.status(200).json({
-        success: true,
-        message: "Valid credentials"
-      });
-    }
-  }
-  return res.status(401).json({
-    success: false,
-    message: "Incorrect email address or password."
-  });
-});
+app.use(json()); // Converts request bodies to json format.
+app.use("/", authenticationRouter);
 
 export default app;
 

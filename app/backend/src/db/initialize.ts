@@ -2,7 +2,7 @@ import Student from "../models/Student.js";
 import initialStudents from "../data/ProsperOnMembers.js";
 
 // Adds existing users to database (if there are none)
-async function seedDatabase() {
+async function initializeDatabase() {
     try {
         // Query Student collection for any all student documents
         const students = await Student.find({}).exec();
@@ -17,5 +17,5 @@ async function seedDatabase() {
     }
 }
 
-export default seedDatabase;
+export default initializeDatabase;
 
