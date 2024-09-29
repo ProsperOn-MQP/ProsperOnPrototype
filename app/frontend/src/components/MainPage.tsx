@@ -23,8 +23,11 @@ function MainPage() {
 
   return (
     <div>
-      <FocusContext userId="12" />
-      <SelectionTracker onSelectionChange={handleSelection} />
+      <div>
+        <FocusContext userId="12" />
+        <SelectionTracker onSelectionChange={handleSelection} />
+      </div>
+
       <div className="bg-white text-black w-full h-full whitespace-normal break-words">
         <header className="bg-wpi-red inset-x-0 top-0 h-16 px-8 grid justify-items-end items-center">
           <button
@@ -44,14 +47,13 @@ function MainPage() {
         <div className="fixed bottom-16 right-8 lg:w-1/4 lg:h-3/5 md:w-1/2 md:h-3/4 w-4/5 h-4/5">
           {showComponent && <ShowChatbot suggestion={suggestion} />}{" "}
         </div>
-
-        <footer className="absolute bottom-0 right-8 h-16 grid justify-items-end items-center">
-          <button
-            className="bg-wpi-red hover:bg-red-700 w-12 h-12 fixed rounded-full"
-            onClick={() => setShowComponent(!showComponent)}
-          ></button>
-        </footer>
       </div>
+      <footer className="absolute bottom-0 right-8 h-16 grid justify-items-end items-center">
+        <button
+          className="bg-wpi-red hover:bg-red-700 w-12 h-12 fixed rounded-full"
+          onClick={() => setShowComponent(!showComponent)}
+        ></button>
+      </footer>
     </div>
   );
 }

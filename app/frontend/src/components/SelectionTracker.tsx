@@ -26,18 +26,19 @@ const SelectionTracker: React.FC<SelectionTrackerProps> = ({
 
     return "No selection";
   };
-
   const handleSelectionChange = () => {
     const selection = window.getSelection();
-    if (selection && selection.rangeCount > 0) {
-      const selectedRange = selection.getRangeAt(0);
-      const selectedElement = selectedRange.commonAncestorContainer;
+    if (!selection || selection.isCollapsed) return;
 
-      if (selectedElement && selectedElement.textContent?.trim()) {
-        const extractedData = extractData(selectedElement);
-        onSelectionChange(extractedData);
-      }
+    const target = selection.anchorNode?.parentElement;
+    if (!target) return;
+
+    if (target.closest("input, textarea, button, .chatbot-container")) {
+      return;
     }
+
+    const selectedText = extractData(target);
+    onSelectionChange(selectedText);
   };
 
   useEffect(() => {

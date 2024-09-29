@@ -77,7 +77,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
         <input
           className="border rounded w-4/5 h-12 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
-          placeholder={`tell me about ${suggestion}`}
+          placeholder={`Tell me about ${suggestion}`}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
