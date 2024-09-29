@@ -10,10 +10,9 @@ dotenv.config({ path: "../../.env" });
 // Set up: Connect to DB and start HTTP server
 connectToDatabase()
   .then(() => {
+    seedDatabase();
     app.listen(5000, () =>
       console.log("Server Open and connected to database")
     );
-    seedDatabase();
-    console.log("done");
   })
   .catch((err) => console.log(err));

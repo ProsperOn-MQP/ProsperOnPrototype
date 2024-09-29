@@ -1,4 +1,3 @@
-// Defines logic to connect and disconnect from database
 import { connect, disconnect } from "mongoose";
 
 async function connectToDatabase() {

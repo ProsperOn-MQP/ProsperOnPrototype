@@ -1,5 +1,5 @@
 import Student from "../models/Student.js";
-import initialStudents from "../data/students.js";
+import initialStudents from "../data/ProsperOnMembers.js";
 
 // Adds existing users to database (if there are none)
 async function seedDatabase() {

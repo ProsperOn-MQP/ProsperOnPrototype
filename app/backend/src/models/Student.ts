@@ -1,4 +1,4 @@
-// Defines an object that can be used to add a user profile to database
+// Defines an object that can be used to add a student user to database
 import { Schema, model } from "mongoose";
 
 const studentSchema = new Schema({
@@ -28,6 +28,6 @@ const studentSchema = new Schema({
     }
 });
 
-const User = model("Student", studentSchema);
+const Student = model("Student", studentSchema);
 
-export default User;
+export default Student;
