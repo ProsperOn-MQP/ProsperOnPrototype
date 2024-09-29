@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+
+#example post http request
 @app.route('/api/process', methods=['POST'])
 def process_message():
     data = request.json
