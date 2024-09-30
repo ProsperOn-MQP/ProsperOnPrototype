@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -13,22 +15,24 @@ function LoginPage() {
     e.preventDefault();
     // Login auth here
     try {
-      const response = await axios.post("http://localhost:5001/login", {
-        email: username, 
-        password: password
-      }, {
-        headers: {
-          "Content-Type": "application/json"
+      const response = await axios.post(
+        "http://localhost:5001/login",
+        {
+          email: username,
+          password: password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       if (response.data.success == true) {
         navigate("/main");
-      }
-      else {
+      } else {
         alert("Wrong username or password");
       }
-    }
-    catch (error) {
+    } catch (error) {
       alert("Wrong username or password");
     }
     // if (username === "user" && password === "pass") {
@@ -44,20 +48,35 @@ function LoginPage() {
         <div className="bg-white mb-8 w-full">
           <img className="max-h-50" src={"/src/assets/wpi.png"} />
         </div>
-        <h1 className="text-3xl font-bold mb-4 text-center">Login Page</h1>
+        <h1 className="text-3xl font-bold mb-4 text-center">Log In</h1>
         <form onSubmit={handleLogin}>
-          <label className="text-wpi-red font-bold w-full justify-left">Username</label>
+          <FontAwesomeIcon
+            icon={faUser}
+            size="xs"
+            className="text-wpi-red pr-1"
+          />
+          <label className="text-wpi-red font-bold w-full justify-left">
+            Username
+          </label>
           <input
-            className="border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="border rounded w-full py-2 px-3 text-gray-700 mb-3 focus:outline-none focus:shadow-outline"
             id="usernameInput"
             type="text"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <label className="text-wpi-red font-bold w-full justify-left">Password</label>
+
+          <FontAwesomeIcon
+            icon={faLock}
+            size="xs"
+            className="text-wpi-red pr-1"
+          />
+          <label className="text-wpi-red font-bold w-full justify-left">
+            Password
+          </label>
           <input
-            className="border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="border rounded w-full py-2 px-3 text-gray-700 mb-3 focus:outline-none focus:shadow-outline"
             id="passwordInput"
             type="password"
             placeholder="Password"
