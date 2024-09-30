@@ -1,15 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import ChatWindow from "./ChatWindow.tsx";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFaceSmile, faFaceLaugh, faUser, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function MainPage() {
   const navigate = useNavigate();
+  
+  //icons
+  const [isHovered, setIsHovered] = useState(false);
 
+  //handle logout
   const onLogout = async (e: any) => {
     e.preventDefault();
     navigate("/login");
   };
 
+  //handle chatbot button
   const [showComponent, setShowComponent] = useState(false);
 
   return (
@@ -21,7 +28,7 @@ function MainPage() {
           id="logoutButton"
           onClick={onLogout}
         >
-          Logout
+          <FontAwesomeIcon icon={faArrowRightFromBracket}/> Logout
         </button>
       </header>
       <h1 className="text-3xl font-bold mb-4 text-center">Main Page</h1>
@@ -31,9 +38,13 @@ function MainPage() {
 
       <footer className="absolute bottom-0 right-8 h-16 grid justify-items-end items-center">
         <button
-          className="bg-wpi-red hover:bg-red-700 w-12 h-12 fixed rounded-full"
+          className="bg-wpi-red hover:bg-red-700 w-12 h-12 focus:outline-none	fixed rounded-full flex justify-center items-center"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           onClick={() => setShowComponent(!showComponent)}
-        ></button>
+        >
+          <FontAwesomeIcon icon={isHovered ? faFaceLaugh : faFaceSmile} size="xl" className="text-white hover:rotate-360 duration-300 leading-none" />
+        </button>
       </footer>
     </div>
   );
