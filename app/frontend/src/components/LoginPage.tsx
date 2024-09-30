@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
@@ -26,7 +26,9 @@ function LoginPage() {
         </div>
         <h1 className="text-3xl font-bold mb-4 text-center">Login Page</h1>
         <form onSubmit={handleLogin}>
-          <label className="text-wpi-red font-bold w-full justify-left">Username</label>
+          <label className="text-wpi-red font-bold w-full justify-left">
+            Username
+          </label>
           <input
             className="border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="usernameInput"
@@ -35,7 +37,9 @@ function LoginPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <label className="text-wpi-red font-bold w-full justify-left">Password</label>
+          <label className="text-wpi-red font-bold w-full justify-left">
+            Password
+          </label>
           <input
             className="border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="passwordInput"
