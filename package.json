@@ -2,8 +2,8 @@
   "name": "prosperonprototype",
   "version": "1.0.0",
   "scripts": {
-    "client": "cd app/frontend && npm install && npm run dev",
-    "server": "cd app/backend && npm install && npm run build && node .",
+    "client": "cd app/frontend && npm install --omit=dev && npm run dev",
+    "server": "cd app/backend && npm install --omit=dev && npm run build && node .",
     "app": "concurrently \"npm run client\" \"npm run server\""
   },
   "author": "Andy Truong",
