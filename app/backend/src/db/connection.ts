@@ -2,9 +2,10 @@ import { connect, disconnect } from "mongoose";
 
 async function connectToDatabase() {
   try {
-    const dbUri = process.env.DATABASE_URI || "mongodb://localhost:27017/local";
-    console.log(dbUri);
-    await connect(dbUri);
+    console.log(process.env.DATABASE_URI);
+    await connect(
+      process.env.DATABASE_URI || "mongodb://localhost:27017/local"
+    );
   } catch (error) {
     console.log(error);
     throw new Error("Cannot connect to database");
