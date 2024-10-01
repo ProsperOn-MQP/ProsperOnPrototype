@@ -2,14 +2,22 @@
   "name": "prosperonprototype",
   "version": "1.0.0",
   "scripts": {
-    "client": "cd app/frontend && npm install --omit=dev && npm run dev",
-    "server": "cd app/backend && npm install --omit=dev && npm run build && node .",
+    "client": "cd app/frontend && npm run dev",
+    "server": "cd app/backend && npm run build && node .",
     "app": "concurrently \"npm run client\" \"npm run server\""
   },
   "author": "Andy Truong",
   "license": "ISC",
   "description": "Specifies dependencies for the entire application",
   "dependencies": {
-    "concurrently": "^9.0.1"
+    "body-parser": "^1.20.3",
+    "concurrently": "^9.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "react": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "vite": "^5.4.8"
   }
 }
