@@ -6,6 +6,7 @@ async function connectToDatabase() {
     await connect(
       process.env.DATABASE_URI || "mongodb://localhost:27017/local"
     );
+    console.log(`DB at ${process.env.DATABASE_URI}`);
   } catch (error) {
     console.log(error);
   }
