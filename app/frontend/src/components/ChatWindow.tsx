@@ -4,9 +4,8 @@ import EachChat from "./EachChat";
 
 const port = process.env.PORT || "5000";
 const serverURL =
-  `${process.env.BACKEND_URL}:${port}` ||
-  process.env.BACKEND ||
-  `http://localhost:${port}`;
+  //`${process.env.BACKEND_URL}:${port}` ||
+  process.env.BACKEND || `http://localhost:${port}`;
 
 interface ChatLog {
   message: string;
