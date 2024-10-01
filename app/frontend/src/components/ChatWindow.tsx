@@ -26,7 +26,19 @@ const Chatbot: React.FC = () => {
         console.error("Error fetching chat logs:", error);
       }
     };
-
+    const openSite = async () => {
+      try {
+        const response = await fetch(`${serverURL}/`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const hello = await response.json();
+        console.log(hello);
+      } catch (error) {
+        console.error("Error fetching chat logs:", error);
+      }
+    };
+    openSite();
     fetchChatLogs();
   }, []);
 
