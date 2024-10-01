@@ -16,7 +16,7 @@ interface ChatLog {
 }
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Connected to app!");
+  res.json("Connected to app!");
 });
 
 const chatLogSchema = new mongoose.Schema<ChatLog>({
