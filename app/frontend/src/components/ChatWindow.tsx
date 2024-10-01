@@ -8,7 +8,11 @@ interface ChatLog {
   response: string;
 }
 
-const Chatbot: React.FC = () => {
+interface ChatbotProps {
+  suggestion?: string;
+}
+
+const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
   const [message, setMessage] = useState<string>("");
   const [chatLogs, setChatLogs] = useState<ChatLog[]>([]);
 
@@ -73,6 +77,11 @@ const Chatbot: React.FC = () => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       handleSend();
+    } else if (event.key === "Tab") {
+      event.preventDefault();
+      if (suggestion) {
+        setMessage(`Tell me about ${suggestion}`);
+      }
     }
   };
 
@@ -83,10 +92,11 @@ const Chatbot: React.FC = () => {
           <EachChat key={index} message={log.message} response={log.response} />
         ))}
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-16 flex mt-10 py-2 px-3">
+      <div className="sticky bottom-0 h-16 flex mt-10 py-2 px-3">
         <input
           className="border rounded w-4/5 h-12 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
+          placeholder={`Tell me about ${suggestion}`}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -102,4 +112,4 @@ const Chatbot: React.FC = () => {
   );
 };
 
-export default Chatbot;
+export default ChatWindow;

@@ -15,9 +15,12 @@
   "description": "Specifies dependencies for the entire application",
   "devDependencies": {
     "@types/node": "^22.7.3",
+    "autoprefixer": "^10.4.20",
     "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
     "concurrently": "^9.0.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2"
   },
   "dependencies": {
