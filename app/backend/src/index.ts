@@ -11,7 +11,7 @@ dotenv.config({ path: "../../.env" });
 // Set up: Connect to DB and start HTTP server
 connectToDatabase()
   .then(() => {
-    app.listen(port, "0.0.0.0", () =>
+    app.listen(port, "::", () =>
       console.log(
         `Server Open and connected to database. Listening on port ${port}`
       )
