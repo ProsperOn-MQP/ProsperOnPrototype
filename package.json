@@ -10,14 +10,6 @@
   "license": "ISC",
   "description": "Specifies dependencies for the entire application",
   "dependencies": {
-    "body-parser": "^1.20.3",
-    "concurrently": "^9.0.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.0",
-    "mongoose": "^8.7.0",
-    "react": "^18.3.1",
-    "react-router-dom": "^6.26.2",
-    "vite": "^5.4.8"
+    "concurrently": "^9.0.1"
   }
 }
