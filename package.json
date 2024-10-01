@@ -8,7 +8,7 @@
     "python": "cd app/backend/src/python && python app.py",
     "app": "concurrently \"npm run client\" \"npm run server\" \"npm run python\"",
     "build": "concurrently \"cd app/backend && npm run build\" \"cd app/frontend && npm run build \"",
-    "start": "concurrently \"cd app/backend && node .\" \"cd app/frontend && npm run preview \""
+    "start": "concurrently \"cd app/backend && node .\" \"cd app/frontend && npm run host \""
   },
   "author": "Andy Truong",
   "license": "ISC",
