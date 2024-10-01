@@ -7,8 +7,8 @@
     "server": "cd app/backend && npm run build && node .",
     "python": "cd app/backend/src/python && python app.py",
     "app": "concurrently \"npm run client\" \"npm run server\" \"npm run python\"",
-    "production-build": "concurrently \"cd app/backend && npm run build\" \"cd app/frontend && npm run build \"",
-    "production-start": "concurrently \"cd app/backend && node .\" \"cd app/frontend && npm run preview \""
+    "build": "concurrently \"cd app/backend && npm run build\" \"cd app/frontend && npm run build \"",
+    "start": "concurrently \"cd app/backend && node .\" \"cd app/frontend && npm run preview \""
   },
   "author": "Andy Truong",
   "license": "ISC",
