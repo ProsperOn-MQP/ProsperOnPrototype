@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import EachChat from "./EachChat";
-//const port = process.env.PORT || "5000";
-const serverURL = process.env.BACKEND || `http://localhost:5000`;
+const port = process.env.PORT || "5000";
+const serverURL =
+  `${process.env.BACKEND_URL}:${port}` ||
+  process.env.BACKEND ||
+  `http://localhost:${port}`;
 
 interface ChatLog {
   message: string;
