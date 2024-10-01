@@ -1,0 +1,12 @@
+[variables]
+NODE_ENV = 'production'
+
+[phases.install]
+cmd = "npm run install:all"
+
+[phases.build]
+cmd = "npm run production-build"
+
+[start]
+cmd = "npm run production-start"
+

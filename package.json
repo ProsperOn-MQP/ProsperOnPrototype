@@ -4,11 +4,11 @@
   "scripts": {
     "install:all": "npm install && cd app/frontend && npm install && cd ../backend && npm install",
     "client": "cd app/frontend && npm run dev",
-    "client-production": "cd app/frontend && npm run build && npm run preview",
     "server": "cd app/backend && npm run build && node .",
     "python": "cd app/backend/src/python && python app.py",
     "app": "concurrently \"npm run client\" \"npm run server\" \"npm run python\"",
-    "production": "concurrently \"npm run client-production\" \"npm run server\""
+    "production-build": "concurrently \"cd app/backend && npm run build\" \"cd app/frontend && npm run build \"",
+    "production-start": "concurrently \"cd app/backend && node .\" \"cd app/frontend && npm run preview \""
   },
   "author": "Andy Truong",
   "license": "ISC",
