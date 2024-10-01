@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import EachChat from "./EachChat";
 const port = process.env.PORT || "5000";
-const baseUrl = process.env.BACKEND || `http://localhost:${port}`;
+const baseUrl = process.env.BACKEND || `http://localhost`;
+const serverURL = `${baseUrl}:${port}`;
 
 interface ChatLog {
   message: string;
@@ -15,7 +16,7 @@ const Chatbot: React.FC = () => {
   useEffect(() => {
     const fetchChatLogs = async () => {
       try {
-        const response = await fetch(`${baseUrl}/chat/all`);
+        const response = await fetch(`${serverURL}/chat/all`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -36,7 +37,7 @@ const Chatbot: React.FC = () => {
       const response = await fetch(
         //"http://localhost:5001/api/process",
         //"http://localhost:5000/api/pychat",
-        `${baseUrl}/chat`,
+        `${serverURL}/chat`,
         {
           method: "POST",
           headers: {
