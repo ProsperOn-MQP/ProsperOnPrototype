@@ -15,11 +15,11 @@ interface ChatLog {
   response: string;
   timestamp?: Date;
 }
-
+/* 
 app.get("/", (req: Request, res: Response) => {
   res.json("Connected to app!");
 });
-
+ */
 const chatLogSchema = new mongoose.Schema<ChatLog>({
   message: String,
   response: String,
