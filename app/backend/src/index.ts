@@ -3,6 +3,7 @@ import app from "./app.js";
 import dotenv from "dotenv";
 import { connectToDatabase } from "./db/connection.js";
 import seedDatabase from "./db/seed.js";
+const port = process.env.PORT || 5000;
 
 // Load environmental variables from env file
 dotenv.config({ path: "../../.env" });
@@ -10,7 +11,7 @@ dotenv.config({ path: "../../.env" });
 // Set up: Connect to DB and start HTTP server
 connectToDatabase()
   .then(() => {
-    app.listen(5000, () =>
+    app.listen(port, "0.0.0.0", () =>
       console.log("Server Open and connected to database")
     );
     seedDatabase();
