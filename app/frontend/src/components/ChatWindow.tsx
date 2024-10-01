@@ -92,7 +92,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
           <EachChat key={index} message={log.message} response={log.response} />
         ))}
       </div>
-      <div className="sticky bottom-0 h-16 flex mt-10 py-2 px-3">
+      <div className="sticky bottom-0 flex h-16 mt-10 py-2 px-3">
         <input
           className="border rounded w-4/5 h-12 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="text"

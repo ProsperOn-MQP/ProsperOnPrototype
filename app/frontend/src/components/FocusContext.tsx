@@ -12,10 +12,11 @@ interface FocusContextProps {
 }
 
 const FocusContext: React.FC<FocusContextProps> = ({ userId }) => {
+  console.log(userId);
   const [interactions, setInteractions] = useState<InteractionObject[]>([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [responseMessage, setResponseMessage] = useState<string>("");
-
+  //const [responseMessage, setResponseMessage] = useState<string>("");
+  console.log(interactions);
   const updateInteraction = (type: string, action: string, data: string) => {
     setInteractions((prevState) => {
       const existingInteraction = prevState.find(
