@@ -13,7 +13,7 @@ connectToDatabase()
   .then(() => {
     app.listen(port, "::", () =>
       console.log(
-        `Server Open and connected to database. Listening on port ${port}`
+        `Server Open and connected to database. Listening on port [::]${port}`
       )
     );
     //seedDatabase();
