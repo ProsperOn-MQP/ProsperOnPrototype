@@ -5,8 +5,8 @@ NODE_ENV = 'production'
 cmd = "npm run install:all"
 
 [phases.build]
-cmd = "npm run production-build"
+cmd = "npm run build"
 
 [start]
-cmd = "npm run production-start"
+cmd = "npm run start"
 
