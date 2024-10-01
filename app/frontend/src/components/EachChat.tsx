@@ -5,11 +5,8 @@ interface EachChatProps {
   response: string;
 }
 
-const EachChat: React.FC<EachChatProps> = ({ message, response }) => {
-  return (
-    <div style={{ textAlign: "left", marginBottom: "10px" }}>
-      <div
-        style={{
+/* g 
+style={{
           wordWrap: "break-word",
           maxWidth: "80%",
           backgroundColor: "#d1e7dd",
@@ -18,11 +15,7 @@ const EachChat: React.FC<EachChatProps> = ({ message, response }) => {
           marginLeft: "auto",
           right: "8px",
         }}
-      >
-        <div style={{ fontSize: "8pt", textAlign: "right" }}>Username</div>{" "}
-        {message}
-      </div>
-      <div
+          
         style={{
           wordWrap: "break-word",
           maxWidth: "80%",
@@ -32,8 +25,20 @@ const EachChat: React.FC<EachChatProps> = ({ message, response }) => {
           marginTop: "4px",
           marginBottom: "4px",
         }}
-      >
-        <div style={{ fontSize: "8pt" }}>Bot:</div> {response}
+          
+        style={{ fontSize: "8pt", textAlign: "right" }}
+        style={{ fontSize: "8pt" }}style={{ textAlign: "left", marginBottom: "10px" }}
+*/
+
+const EachChat: React.FC<EachChatProps> = ({ message, response }) => {
+  return (
+    <div className="text-left mb-4">
+      <div className="break-words max-w-80 bg-wpi-red p-2 rounded ml-auto right-8">
+        <div className="text-xs font-semibold text-right">Username</div>{" "}
+        {message}
+      </div>
+      <div className="break-words max-w-80 bg-wpi-gray p-2 rounded my-4">
+        <div className="text-xs font-semibold text-left">Bot:</div> {response}
       </div>
     </div>
   );
