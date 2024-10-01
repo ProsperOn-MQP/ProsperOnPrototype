@@ -54,7 +54,7 @@ app.get("/hello", (req, res, next) => {
   return res.send("Hello");
 });
 
-app.post("/api/pychat", async (req: Request, res: Response) => {
+/* app.post("/api/pychat", async (req: Request, res: Response) => {
   const { message } = req.body;
 
   try {
@@ -81,6 +81,6 @@ app.post("/api/pychat", async (req: Request, res: Response) => {
       .status(500)
       .json({ error: "Failed to communicate with Python backend." });
   }
-});
+}); */
 
 export default app;
