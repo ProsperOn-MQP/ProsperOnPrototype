@@ -28,7 +28,7 @@ const chatLogSchema = new mongoose.Schema<ChatLog>({
 const ChatLogModel = mongoose.model<ChatLog>("ChatLog", chatLogSchema);
 
 // handle chat messages
-app.post("/api/chat", async (req: Request, res: Response) => {
+app.post("/chat", async (req: Request, res: Response) => {
   const { message } = req.body;
 
   const chatLog = new ChatLogModel({ message, response: "" });
