@@ -67,13 +67,13 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
   };
 
   return (
-    <div className="absolute origin-center w-full h-full border-solid border-1 border-neutral-300 bg-neutral-100 rounded-lg overflow-y-auto	flex-col">
-      <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
+    <div className="absolute w-full h-full bg-neutral-100 rounded-lg overflow-y-auto flex-col">
+      <div className="grow overflow-y-auto p-2.5">
         {chatLogs.map((log, index) => (
           <EachChat key={index} message={log.message} response={log.response} />
         ))}
       </div>
-      <div className="sticky bottom-0 h-16 flex mt-10 py-2 px-3">
+      <div className="sticky bg-neutral-100 bottom-0 h-16 flex mt-10 py-2 px-3">
         <input
           className="border rounded w-4/5 h-12 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
