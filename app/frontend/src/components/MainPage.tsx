@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ChatWindow from "./ChatWindow.tsx";
 import { useState } from "react";
 import Syllabus from "./Syllabus.tsx";
-import FocusContext from "./FocusContext.tsx";
+//import FocusContext from "./FocusContext.tsx";
 import SelectionTracker from "./SelectionTracker";
 
 function MainPage() {
@@ -24,7 +24,6 @@ function MainPage() {
   return (
     <div>
       <div>
-        <FocusContext userId="12" />
         <SelectionTracker onSelectionChange={handleSelection} />
       </div>
 
