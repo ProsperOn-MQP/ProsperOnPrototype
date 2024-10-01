@@ -65,10 +65,10 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
       }
     }
   };
-
+  //style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}
   return (
-    <div className="absolute origin-center w-full h-full border-solid border-1 border-neutral-300 bg-neutral-100 rounded-lg overflow-y-auto	flex-col">
-      <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
+    <div className="absolute w-full h-full bg-neutral-100 rounded-lg overflow-y-auto flex-col">
+      <div className="grow overflow-y-auto p-2.5">
         {chatLogs.map((log, index) => (
           <EachChat key={index} message={log.message} response={log.response} />
         ))}
