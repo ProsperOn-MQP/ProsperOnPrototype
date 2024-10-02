@@ -1,5 +1,6 @@
 // Defines an object that can be used to add a student user to database
 import { Schema, model } from "mongoose";
+import { messageSchema } from "./Message.js";
 
 const studentSchema = new Schema({
     name: {
@@ -25,7 +26,8 @@ const studentSchema = new Schema({
         type: String,
         required: true,
         trim: true
-    }
+    },
+    chat: [messageSchema]
 });
 
 const Student = model("Student", studentSchema);
