@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const port = process.env.PORT || 5000;
-const backendurl = process.env.SERVER_URL || `http://localhost:${port}/login`;
+const serverURL = process.env.SERVER_URL || `http://localhost:${port}`;
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -13,12 +14,12 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     // Login auth here
     try {
       const response = await axios.post(
-        `${backendurl}/login`,
+        `${serverURL}/login`,
         {
           email: username,
           password: password,
@@ -29,7 +30,7 @@ function LoginPage() {
           },
         }
       );
-      if (response.data.success == true) {
+      if (response.data.success === true) {
         navigate("/main");
       } else {
         alert("Wrong username or password");

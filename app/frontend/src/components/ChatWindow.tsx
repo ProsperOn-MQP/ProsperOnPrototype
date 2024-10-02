@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import EachChat from "./EachChat";
 
 const port = process.env.PORT || 5000;
-const backendurl = process.env.SERVER_URL || `http://localhost:${port}/login`;
-const serverURL =
-  `${process.env.BACKEND_URL}:${port}` ||
-  process.env.BACKEND ||
-  `http://localhost:${port}`;
+const serverURL = process.env.SERVER_URL || `http://localhost:${port}/login`;
 
 interface ChatLog {
   message: string;
