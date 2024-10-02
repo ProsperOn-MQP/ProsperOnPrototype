@@ -12,6 +12,17 @@ app.use(json()); // Converts request bodies to json format.
 app.use(cors());
 app.use("/", authenticationRouter);
 
+app.post("/api/chatbot/message", (req, res) => {
+    // Query database for chatlogs of the requesting user
+
+    // Append new message to chatlogs
+
+    // Send request to OpenAI
+
+    // Send back response
+    res.send("This is a post request");
+});
+
 export default app;
 
 
