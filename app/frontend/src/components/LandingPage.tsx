@@ -22,8 +22,8 @@ function LandingPage() {
 
   return (
     <div className="bg-wpi-gray w-screen h-screen">
-      <Navbar />
-      <h1>Landing Page</h1>
+      <Navbar isLoggedIn={false} />
+      <h1 className="text-3xl font-bold mb-4 text-center">Landing Page</h1>
       <button onClick={onLogin}>Login</button>
     </div>
   );

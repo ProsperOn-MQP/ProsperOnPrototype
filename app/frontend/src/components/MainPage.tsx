@@ -1,30 +1,19 @@
-import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar.tsx";
 import ChatWindow from "./ChatWindow.tsx";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceSmile, faFaceLaugh, faUser, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faFaceSmile, faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
 
 function MainPage() {
-  const navigate = useNavigate();
-  
   //icons
   const [isHovered, setIsHovered] = useState(false);
-
-  //handle logout
-  const onLogout = async (e: any) => {
-    e.preventDefault();
-    navigate("/");
-  };
 
   //handle chatbot button
   const [showComponent, setShowComponent] = useState(false);
 
   return (
     <div className="bg-wpi-gray w-screen h-screen">
-
-      <Navbar/>
-
+      <Navbar isLoggedIn={true} />
       <h1 className="text-3xl font-bold mb-4 text-center">Main Page</h1>
       <div className="absolute bottom-16 right-8 lg:w-1/4 lg:h-3/5 md:w-1/2 md:h-3/4 w-4/5 h-4/5">
         {showComponent && <ShowChatbot />}
@@ -37,7 +26,11 @@ function MainPage() {
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => setShowComponent(!showComponent)}
         >
-          <FontAwesomeIcon icon={isHovered ? faFaceLaugh : faFaceSmile} size="xl" className="text-white hover:rotate-360 duration-300 leading-none" />
+          <FontAwesomeIcon
+            icon={isHovered ? faFaceLaugh : faFaceSmile}
+            size="xl"
+            className="text-white hover:rotate-360 duration-300 leading-none"
+          />
         </button>
       </footer>
     </div>

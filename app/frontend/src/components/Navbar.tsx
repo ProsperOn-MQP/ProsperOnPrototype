@@ -1,17 +1,23 @@
-//import React from "react";
-//import axios from "axios";
-//import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleQuestion,
+  faArrowRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
-function Navbar() {
+interface NavbarProps {
+    isLoggedIn: boolean;
+  }
+  
+  const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   const navigate = useNavigate();
 
   //handle login
   const onLogin = async (e: any) => {
     e.preventDefault();
-    navigate("/landing");
+    {isLoggedIn ? navigate("/landing") : navigate("/login")}
+    ;
   };
 
   //handle help -- temp
@@ -31,7 +37,7 @@ function Navbar() {
         id="helpButton"
         onClick={onHelp}
       >
-        Help
+        <FontAwesomeIcon icon={faCircleQuestion} /> Help
       </button>
       <button
         className="bg-black hover:bg-gray-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
@@ -39,7 +45,8 @@ function Navbar() {
         id="logoutButton"
         onClick={onLogin}
       >
-        <FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout
+        <FontAwesomeIcon icon={faArrowRightFromBracket} />{" "}
+        {isLoggedIn ? "Logout" : "Login"}
       </button>
     </header>
   );
