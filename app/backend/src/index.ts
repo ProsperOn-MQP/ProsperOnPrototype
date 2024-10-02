@@ -3,7 +3,6 @@ import app from "./app.js";
 import { connectToDatabase } from "./db/connection.js";
 import dotenv from "dotenv";
 import initializeDatabase from "./db/initialize.js";
-import seedDatabase from "./db/seed.js";
 dotenv.config({ path: "../../.env" });
 const port = process.env.PORT || 5000;
 
