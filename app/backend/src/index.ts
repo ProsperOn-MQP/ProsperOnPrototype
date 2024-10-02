@@ -8,10 +8,12 @@ const port = process.env.PORT || 5000;
 // Load environmental variables from env file
 dotenv.config({ path: "../../.env" });
 
+const port = process.env.PORT || 5000;
+
 // Set up: Connect to DB and start HTTP server
 connectToDatabase()
   .then(() => {
-    app.listen(port, "0.0.0.0", () =>
+    app.listen(port, "::", () =>
       console.log(
         `Server Open and connected to database. Listening on port ${port}`
       )
