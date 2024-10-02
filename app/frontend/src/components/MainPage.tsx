@@ -1,18 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar.tsx";
 import ChatWindow from "./ChatWindow.tsx";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFaceSmile, faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
 import Syllabus from "./Syllabus.tsx";
-import FocusContext from "./FocusContext.tsx";
+//import FocusContext from "./FocusContext.tsx";
 import SelectionTracker from "./SelectionTracker";
 
 function MainPage() {
-  const navigate = useNavigate();
+  //icons
+  const [isHovered, setIsHovered] = useState(false);
 
-  const onLogout = async (e: any) => {
-    e.preventDefault();
-    navigate("/login");
-  };
-
+  //handle chatbot button
   const [showComponent, setShowComponent] = useState(false);
   const [suggestion, setSuggestion] = useState<string>("");
 
@@ -24,9 +23,10 @@ function MainPage() {
   return (
     <div>
       <div>
-        <FocusContext userId="12" />
         <SelectionTracker onSelectionChange={handleSelection} />
       </div>
+      <Navbar isLoggedIn={true} />
+      <h1 className="text-3xl font-bold mb-4 text-center">Main Page</h1>
 
       <div className="bg-white text-black w-full h-full whitespace-normal break-words">
         <header className="fixed bg-wpi-red inset-x-0 top-0 h-16 px-8 grid justify-items-end items-center">
@@ -50,9 +50,17 @@ function MainPage() {
       </div>
       <footer className="absolute bottom-0 right-8 h-16 grid justify-items-end items-center">
         <button
-          className="bg-wpi-red hover:bg-red-700 w-12 h-12 fixed rounded-full"
+          className="bg-wpi-red hover:bg-red-700 w-12 h-12 focus:outline-none	fixed rounded-full flex justify-center items-center"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           onClick={() => setShowComponent(!showComponent)}
-        ></button>
+        >
+          <FontAwesomeIcon
+            icon={isHovered ? faFaceLaugh : faFaceSmile}
+            size="xl"
+            className="text-white hover:rotate-360 duration-300 leading-none"
+          />
+        </button>
       </footer>
     </div>
   );

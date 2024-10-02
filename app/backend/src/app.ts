@@ -1,4 +1,10 @@
-import express, { Request, Response } from "express";
+// Creates an router for the overall application
+import authenticationRouter from "./routers/authentication.js";
+// import express, { Request, Response } from "express";
+// import bodyParser from "body-parser";
+// import dotenv from "dotenv";
+// import mongoose from "mongoose";
+import express, { Request, Response, json } from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -7,7 +13,9 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
+app.use(json()); // Converts request bodies to json format.
 app.use(cors());
+app.use("/", authenticationRouter);
 app.use(bodyParser.json());
 
 interface ChatLog {
@@ -140,6 +148,7 @@ app.get("/hello", (req, res) => {
 
 export default app;
 
+
 // app.use(cors());
 // app.use(bodyParser.json());
 
@@ -182,3 +191,4 @@ export default app;
 //     res.status(500).json({ error: "FAILED UHH" });
 //   }
 // });
+

@@ -1,4 +1,4 @@
-const initialStudents = [
+const ProsperOnMembers = [
     { 
         name: { firstName: "Ryan", lastName: "Dalton" },
         email: "rcdalton@wpi.edu",
@@ -26,4 +26,4 @@ const initialStudents = [
     }
 ];
 
-export default initialStudents;
+export default ProsperOnMembers;

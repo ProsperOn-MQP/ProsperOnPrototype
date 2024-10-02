@@ -4,6 +4,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 
@@ -14,7 +15,8 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/landing" />} />
+          <Route path="/landing" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/main" element={<MainPage />} />
         </Routes>
