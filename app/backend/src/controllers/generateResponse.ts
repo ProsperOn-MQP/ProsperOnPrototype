@@ -1,5 +1,6 @@
+import OpenAI from "openai";
+import { Message } from "../models/Message.js";
 import Student from "../models/Student.js";
-import {openai } from "../chatgpt/OpenAI.js";
 
 const generateResponse = async (req, res) => {
     // Query database for chatlogs of the requesting user
@@ -10,21 +11,26 @@ const generateResponse = async (req, res) => {
 
     // Push new message to database
     const chatlogs = user.chat;
-    chatlogs.push(req.body.message);
+    chatlogs.push(new Message({role: "user", content: req.body.message.content}));
     await user.save();
 
     // Send request to OpenAI
     const messagesToSend = user.chat.toObject()
-    
+    const openai = new OpenAI({apiKey: process.env.OPEN_AI_KEY});
     const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
         messages: messagesToSend
     });
 
+    // Store response in database
+    const gptResponse = completion.choices[0].message;
+    chatlogs.push(new Message({role: gptResponse.role, content: gptResponse.content}));
+    await user.save();
+
     // Send back response
-    res.send("Post request");
-
-
+    res.status(202).json({
+        response: gptResponse
+    });
 };
 
 export default generateResponse;

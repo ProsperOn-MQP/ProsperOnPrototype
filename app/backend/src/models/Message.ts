@@ -4,13 +4,18 @@ import { Schema, model } from "mongoose";
 const messageSchema = new Schema({
     role: {
         type: String,
-        required: true,
         trim: true
     },
     content: {
         type: String,
-        required: true,
         trim: true
+    }
+}, {
+    toObject: {
+        transform: function(doc, ret) {
+            delete ret._id;
+            return ret;
+        }
     }
 });
 
