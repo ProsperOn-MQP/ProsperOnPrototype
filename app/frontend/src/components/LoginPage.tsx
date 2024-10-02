@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -35,11 +35,6 @@ function LoginPage() {
     } catch (error) {
       alert("Wrong username or password");
     }
-    // if (username === "user" && password === "pass") {
-    //   navigate("/main");
-    // } else {
-    //   alert("Wrong username or password");
-    // }
   };
 
   return (
