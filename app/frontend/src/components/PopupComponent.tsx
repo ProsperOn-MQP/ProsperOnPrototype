@@ -10,6 +10,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ trigger, pageComponent 
   <Popup 
     trigger={trigger} 
     modal
+    nested
   >
     {(close: () => void) => (
       <div className="modal w-screen h-screen flex justify-center items-center">

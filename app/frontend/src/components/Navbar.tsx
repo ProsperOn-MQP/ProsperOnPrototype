@@ -17,10 +17,10 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
   const navigate = useNavigate();
 
   //handle login
-  const onLoginPage = async (e: any) => {
+  const onLogout = async (e: any) => {
     e.preventDefault();
     {
-      isLoggedIn ? navigate("/landing") : navigate("/login");
+      navigate("/landing");
     }
   };
 
@@ -32,16 +32,17 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
             <FontAwesomeIcon icon={faCircleQuestion} /> Help
           </button>
         }
-        pageComponent={<HelpPage />}
+        pageComponent={<HelpPage isLoggedIn={isLoggedIn} />}
       />
 
-      {/*if logged in, show normal logout button*/}
+      {/*if logged in, show logout button -> leads to landing page
+         if logged out, show login button -> leads to login popup*/}
       {isLoggedIn ? (
         <button
           className="bg-black hover:bg-gray-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
           type="button"
           id="logoutButton"
-          onClick={onLoginPage}
+          onClick={onLogout}
         >
           <FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout
         </button>
