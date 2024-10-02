@@ -29,17 +29,6 @@ function MainPage() {
       <h1 className="text-3xl font-bold mb-4 text-center">Main Page</h1>
 
       <div className="bg-white text-black w-full h-full whitespace-normal break-words">
-        <header className="fixed bg-wpi-red inset-x-0 top-0 h-16 px-8 grid justify-items-end items-center">
-          <button
-            className="bg-black hover:bg-gray-700 text-white font-bold rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            id="logoutButton"
-            onClick={onLogout}
-          >
-            Logout
-          </button>
-        </header>
-
         <div className="flex items-center justify-center">
           <Syllabus />
         </div>
