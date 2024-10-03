@@ -1,6 +1,23 @@
 // Defines an object that can be used to add a student user to database
 import { Schema, model } from "mongoose";
-import { messageSchema, Message } from "./Message.js";
+
+const messageSchema = new Schema({
+    role: {
+        type: String,
+        trim: true
+    },
+    content: {
+        type: String,
+        trim: true
+    }
+}, {
+    toObject: {
+        transform: function(doc, ret) {
+            delete ret._id;
+            return ret;
+        }
+    }
+});
 
 const studentSchema = new Schema({
     name: {
