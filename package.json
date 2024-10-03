@@ -2,14 +2,48 @@
   "name": "prosperonprototype",
   "version": "1.0.0",
   "scripts": {
+    "install:all": "npm install && cd app/frontend && npm install && cd ../backend && npm install",
     "client": "cd app/frontend && npm run dev",
     "server": "cd app/backend && npm run build && node .",
-    "app": "concurrently \"npm run client\" \"npm run server\""
+    "python": "cd app/backend/src/python && python app.py",
+    "app": "concurrently \"npm run client\" \"npm run server\" \"npm run python\"",
+    "build": "concurrently \"cd app/backend && npm run build\" \"cd app/frontend && npm run build \"",
+    "start": "concurrently \"cd app/backend && node .\" \"cd app/frontend && npm run host  \""
   },
   "author": "Andy Truong",
   "license": "ISC",
   "description": "Specifies dependencies for the entire application",
+  "devDependencies": {
+    "@types/node": "^22.7.3",
+    "autoprefixer": "^10.4.20",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "concurrently": "^9.0.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2"
+  },
   "dependencies": {
-    "concurrently": "^9.0.1"
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "axios": "^1.7.7",
+    "concurrently": "^9.0.1",
+    "react-icons": "^5.3.0",
+    "reactjs-popup": "^2.0.6",
+    "@vitejs/plugin-react": "^4.3.2",
+    "autoprefixer": "^10.4.20",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "postcss": "^8.4.47",
+    "react": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8"
   }
 }
