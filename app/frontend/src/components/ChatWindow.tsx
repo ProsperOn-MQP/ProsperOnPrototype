@@ -1,29 +1,43 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import EachChat from "./EachChat";
+
+const port = process.env.PORT || 5000;
+const serverURL = process.env.SERVER_URL || `http://localhost:${port}/login`;
 
 interface ChatLog {
   message: string;
   response: string;
 }
 
-const Chatbot: React.FC = () => {
+interface ChatbotProps {
+  suggestion?: string;
+}
+
+const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
   const [message, setMessage] = useState<string>("");
   const [chatLogs, setChatLogs] = useState<ChatLog[]>([]);
 
   useEffect(() => {
     const fetchChatLogs = async () => {
       try {
-        const response = await fetch("http://localhost:5000/chat/all");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const initialLogs = await response.json();
-        setChatLogs(initialLogs);
+        const response = await axios.get(`${serverURL}/chat/all`);
+        setChatLogs(response.data);
       } catch (error) {
         console.error("Error fetching chat logs:", error);
       }
     };
 
+    const openSite = async () => {
+      try {
+        const response = await axios.get(`${serverURL}/`);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching site:", error);
+      }
+    };
+
+    openSite();
     fetchChatLogs();
   }, []);
 
@@ -31,29 +45,31 @@ const Chatbot: React.FC = () => {
     if (message.trim() === "") return;
 
     try {
-      const response = await fetch("http://localhost:5000/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message }),
-      });
+      const response = await axios.post(
+        `${serverURL}/chat`,
+        { message },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      if (!response.ok) {
-        throw new Error("UHHHHH");
-      }
-
-      const botResponse = await response.text();
+      const botResponse = response.data;
       setChatLogs([...chatLogs, { message, response: botResponse }]);
       setMessage("");
     } catch (error) {
-      console.error("cant send message:", error);
+      console.error("Error sending message:", error);
     }
   };
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       handleSend();
+    } else if (event.key === "Tab") {
+      event.preventDefault();
+      if (suggestion) {
+        setMessage(`Tell me about ${suggestion}`);
+      }
     }
   };
 
@@ -64,10 +80,11 @@ const Chatbot: React.FC = () => {
           <EachChat key={index} message={log.message} response={log.response} />
         ))}
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-16 flex mt-10 py-2 px-3">
+      <div className="sticky bottom-0 flex h-16 mt-10 py-2 px-3">
         <input
           className="border rounded w-4/5 h-12 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
+          placeholder={`Tell me about ${suggestion}`}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -83,4 +100,4 @@ const Chatbot: React.FC = () => {
   );
 };
 
-export default Chatbot;
+export default ChatWindow;

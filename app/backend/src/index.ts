@@ -3,16 +3,21 @@ import app from "./app.js";
 import { connectToDatabase } from "./db/connection.js";
 import dotenv from "dotenv";
 import initializeDatabase from "./db/initialize.js";
+dotenv.config({ path: "../../.env" });
+const port = process.env.PORT || 5000;
 
 // Load environmental variables from env file
-dotenv.config({ path: "../../.env" });
 
 // Connect to DB and start HTTP server
 connectToDatabase()
   .then(() => {
     initializeDatabase();
-    app.listen(5001, () =>
-      console.log("Server running and connected to database")
+
+    app.listen(port, "::", () =>
+      console.log(
+        `Server Open and connected to database. Listening on port ${port}`
+      )
     );
+    console.log("done");
   })
   .catch((err) => console.log(err));
