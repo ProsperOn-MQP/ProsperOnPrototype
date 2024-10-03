@@ -1,9 +1,5 @@
 // Creates an router for the overall application
 import authenticationRouter from "./routers/authentication.js";
-// import express, { Request, Response } from "express";
-// import bodyParser from "body-parser";
-// import dotenv from "dotenv";
-// import mongoose from "mongoose";
 import express, { Request, Response, json } from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
@@ -153,7 +149,6 @@ app.post("/api/chatbot/message", generateResponse);
 
 export default app;
 
-
 // app.use(cors());
 // app.use(bodyParser.json());
 
@@ -196,4 +191,3 @@ export default app;
 //     res.status(500).json({ error: "FAILED UHH" });
 //   }
 // });
-
