@@ -74,15 +74,24 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
   };
 
   return (
-    <div className="absolute origin-center w-full h-full border-solid border-1 border-neutral-300 bg-neutral-100 rounded-lg overflow-y-auto	flex-col">
-      <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
-        {chatLogs.map((log, index) => (
-          <EachChat key={index} message={log.message} response={log.response} />
-        ))}
+    <div className="flex flex-col absolute origin-center w-full h-full border-solid border-1 border-neutral-300 bg-neutral-300 rounded-lg shadow-lg bottom-0">
+      <div className="flex-grow overflow-y-auto">
+        <div className=" overflow-y-auto flex-col">
+          <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
+            {chatLogs.map((log, index) => (
+              <EachChat
+                key={index}
+                message={log.message}
+                response={log.response}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="sticky bottom-0 flex h-16 mt-10 py-2 px-3">
+
+      <div className="sticky bottom-0 flex h-16 py-2 px-3">
         <input
-          className="border rounded w-4/5 h-12 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-white border rounded w-4/5 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           placeholder={`Tell me about ${suggestion}`}
           value={message}
@@ -90,7 +99,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
           onKeyDown={handleKeyDown}
         />
         <button
-          className="bg-black hover:bg-gray-700 w-1/5 text-white text-size-lg font-bold py-2 px-3 focus:outline-none focus:shadow-outline"
+          className="bg-white hover:bg-gray-400 w-1/5 text-gray-900 rounded font-bold py-2 px-3 focus:outline-none focus:shadow-outline"
           onClick={handleSend}
         >
           Send
