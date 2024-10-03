@@ -1,5 +1,10 @@
 const ProsperOnMembers = [
     { 
+        name: { firstName: "Jerry", lastName: "Johnson" },
+        email: "prosperonmqp@wpi.edu",
+        password: "prosperon"
+    },
+    { 
         name: { firstName: "Ryan", lastName: "Dalton" },
         email: "rcdalton@wpi.edu",
         password: "rcdalton"
