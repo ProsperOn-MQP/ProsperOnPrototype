@@ -1,4 +1,4 @@
-import PopupComponent from "./PopupComponent";
+import PopupComponent from "../components/PopupComponent";
 import LoginPage from "./LoginPage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";

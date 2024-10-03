@@ -1,11 +1,11 @@
-import Navbar from "./Navbar.tsx";
-import ChatWindow from "./ChatWindow.tsx";
+import Navbar from "../components/Navbar.tsx";
+import ChatWindow from "../components/ChatWindow.tsx";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmile, faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
-import Syllabus from "./Syllabus.tsx";
+import Syllabus from "../components/Syllabus.tsx";
 //import FocusContext from "./FocusContext.tsx";
-import SelectionTracker from "./SelectionTracker";
+import SelectionTracker from "../components/SelectionTracker.tsx";
 
 function MainPage() {
   //icons
@@ -25,8 +25,7 @@ function MainPage() {
       <div>
         <SelectionTracker onSelectionChange={handleSelection} />
       </div>
-      <Navbar isLoggedIn={true} />
-      <h1 className="text-3xl font-bold mb-4 text-center">Main Page</h1>
+      <Navbar isLoggedIn={true} pageName="Main Page" />
 
       <div className="bg-white text-black w-full h-full whitespace-normal break-words">
         <div className="flex items-center justify-center">
