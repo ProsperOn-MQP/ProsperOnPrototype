@@ -52,7 +52,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
         `${serverURL}/api/chatbot/message`,
         {
           email: "prosperOnMQP@wpi.edu",
-          message: { user: "user", content: userContent}
+          message: { user: "user", content: userContent },
         },
         {
           headers: {
@@ -63,16 +63,18 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
 
       // Reload chat
       const updatedChat = chat;
-      updatedChat.push({role: "user", content: userContent});
-      updatedChat.push({role: response.data.role, content: response.data.content})
+      updatedChat.push({ role: "user", content: userContent });
+      updatedChat.push({
+        role: response.data.role,
+        content: response.data.content,
+      });
       setChat(updatedChat);
       setUserContent("");
       console.log(chat);
-
     } catch (error) {
       console.error("Error sending message:", error);
     }
-  };
+  }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -86,16 +88,24 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
   };
 
   return (
-    <div className="absolute origin-center w-full h-full border-solid border-1 border-neutral-300 bg-neutral-100 rounded-lg overflow-y-auto	flex-col">
-      <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
-        
-        {chat.map((message, index) => (
-          <MessageBox key={index} role={message.role} content={message.content}/>
-        ))}
+    <div className="flex flex-col absolute origin-center w-full h-full border-solid border-1 border-neutral-300 bg-neutral-300 rounded-lg shadow-lg bottom-0">
+      <div className="flex-grow overflow-y-auto">
+        <div className=" overflow-y-auto flex-col">
+          <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
+            {chat.map((message, index) => (
+              <MessageBox
+                key={index}
+                role={message.role}
+                content={message.content}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="absolute flex w-full bottom-2 h-16 mt-10 py-2 px-3">
+
+      <div className="sticky bottom-0 flex h-16 py-2 px-3">
         <input
-          className="border rounded w-4/5 h-12 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-white border rounded w-4/5 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           placeholder={`Tell me about ${suggestion}`}
           value={userContent}
@@ -103,7 +113,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
           onKeyDown={handleKeyDown}
         />
         <button
-          className="bg-black hover:bg-gray-700 w-1/5 text-white text-size-lg font-bold py-2 px-3 focus:outline-none focus:shadow-outline"
+          className="bg-white hover:bg-gray-400 w-1/5 text-gray-900 rounded font-bold py-2 px-3 focus:outline-none focus:shadow-outline"
           onClick={handleSend}
         >
           Send
