@@ -15,8 +15,7 @@ const FocusContext: React.FC<FocusContextProps> = ({ userId }) => {
   console.log(userId);
   const [interactions, setInteractions] = useState<InteractionObject[]>([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  //const [responseMessage, setResponseMessage] = useState<string>("");
-  console.log(interactions);
+
   const updateInteraction = (type: string, action: string, data: string) => {
     setInteractions((prevState) => {
       const existingInteraction = prevState.find(
@@ -26,19 +25,24 @@ const FocusContext: React.FC<FocusContextProps> = ({ userId }) => {
           interaction.data === data
       );
 
+      let updatedInteractions;
       if (existingInteraction) {
-        return prevState.map((interaction) =>
+        updatedInteractions = prevState.map((interaction) =>
           interaction === existingInteraction
             ? { ...interaction, count: interaction.count + 1 }
             : interaction
         );
       } else {
-        return [...prevState, { type, action, data, count: 1 }];
+        updatedInteractions = [...prevState, { type, action, data, count: 1 }];
       }
+
+      // Limit the array size to 4 interactions
+      return updatedInteractions.length > 4
+        ? updatedInteractions.slice(-4)
+        : updatedInteractions;
     });
   };
 
-  // summarizes div
   const extractData = (target: HTMLElement): string => {
     const strongElement = target.querySelector("strong");
     if (strongElement) {
@@ -59,11 +63,9 @@ const FocusContext: React.FC<FocusContextProps> = ({ userId }) => {
       const target = event.target as HTMLElement;
 
       if (target.tagName === "IMG") {
-        // Log interactions only for <img> elements
         const imageData = target.getAttribute("src") || "Unknown Image";
         updateInteraction("image", "hovered", imageData);
       } else {
-        // Always log interaction but only store <strong> or first sentence
         const textData = extractData(target);
         updateInteraction("text", "hovered", textData);
       }
