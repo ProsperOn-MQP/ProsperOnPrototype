@@ -9,6 +9,8 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
+import Student from "./models/Student.js";
+import generateResponse from "./controllers/generateResponse.js";
 
 dotenv.config();
 
@@ -145,6 +147,9 @@ app.get("/hello", (req, res) => {
       .json({ error: "Failed to communicate with Python backend." });
   }
 }); */
+
+// Serve a response from ChatGPT
+app.post("/api/chatbot/message", generateResponse);
 
 export default app;
 
