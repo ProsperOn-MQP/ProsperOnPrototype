@@ -1,5 +1,4 @@
 import OpenAI from "openai";
-import { Message } from "../models/Message.js";
 import Student from "../models/Student.js";
 
 const generateResponse = async (req, res) => {
@@ -11,7 +10,7 @@ const generateResponse = async (req, res) => {
 
     // Push new message to database
     const chatlogs = user.chat;
-    chatlogs.push(new Message({role: "user", content: req.body.message.content}));
+    chatlogs.push({role: "user", content: req.body.message.content});
     await user.save();
 
     // Send request to OpenAI
@@ -24,7 +23,7 @@ const generateResponse = async (req, res) => {
 
     // Store response in database
     const gptResponse = completion.choices[0].message;
-    chatlogs.push(new Message({role: gptResponse.role, content: gptResponse.content}));
+    chatlogs.push({role: gptResponse.role, content: gptResponse.content});
     await user.save();
 
     // Send back response
