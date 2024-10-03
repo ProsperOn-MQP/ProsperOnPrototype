@@ -27,9 +27,7 @@ const generateResponse = async (req, res) => {
     await user.save();
 
     // Send back response
-    res.status(202).json({
-        response: gptResponse
-    });
+    res.status(202).json(gptResponse);
 };
 
 export default generateResponse;

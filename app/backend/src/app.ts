@@ -24,11 +24,7 @@ interface ChatLog {
   response: string;
   timestamp?: Date;
 }
-/* 
-app.get("/", (req: Request, res: Response) => {
-  res.json("Connected to app!");
-});
- */
+
 const chatLogSchema = new mongoose.Schema<ChatLog>({
   message: String,
   response: String,
@@ -117,7 +113,6 @@ app.get("/chat/all", async (req: Request, res: Response) => {
 app.get("/hello", (req, res) => {
   return res.send("Hello");
 });
-
 
 export default app;
 
