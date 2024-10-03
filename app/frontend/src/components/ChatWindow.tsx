@@ -51,7 +51,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
       const response = await axios.post(
         `${serverURL}/api/chatbot/message`,
         {
-          email: "prosperOnMQP@wpi.edu",
+          email: "prosperonmqp@wpi.edu",
           message: { user: "user", content: userContent}
         },
         {
