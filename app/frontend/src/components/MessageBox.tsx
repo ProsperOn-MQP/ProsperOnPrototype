@@ -1,13 +1,12 @@
-import React from "react";
-
-interface EachChatProps {
-  message: string;
-  response: string;
+interface MessageBoxProps {
+  role: string,
+  content: string
 }
 
-const EachChat: React.FC<EachChatProps> = ({ message, response }) => {
+function MessageBox(props: MessageBoxProps) {
   return (
     <div style={{ textAlign: "left", marginBottom: "10px" }}>
+    {props.role == "user" ? (
       <div
         style={{
           wordWrap: "break-word",
@@ -20,8 +19,9 @@ const EachChat: React.FC<EachChatProps> = ({ message, response }) => {
         }}
       >
         <div style={{ fontSize: "8pt", textAlign: "right" }}>Username</div>{" "}
-        {message}
+        {props.content}
       </div>
+     ): (
       <div
         style={{
           wordWrap: "break-word",
@@ -33,10 +33,11 @@ const EachChat: React.FC<EachChatProps> = ({ message, response }) => {
           marginBottom: "4px",
         }}
       >
-        <div style={{ fontSize: "8pt" }}>Bot:</div> {response}
-      </div>
+      <div style={{ fontSize: "8pt" }}>Bot:</div> {props.content}
+    </div>
+        )}
     </div>
   );
-};
+}
 
-export default EachChat;
+export default MessageBox;
