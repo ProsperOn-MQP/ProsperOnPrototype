@@ -113,7 +113,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
           onKeyDown={handleKeyDown}
         />
         <button
-          className="bg-white hover:bg-gray-400 w-1/5 text-gray-900 rounded font-bold py-2 px-3 focus:outline-none focus:shadow-outline"
+          className="bg-black hover:bg-gray-700 px-3 py-2 text-white rounded font-bold focus:outline-none focus:shadow-outline"
           onClick={handleSend}
         >
           Send
