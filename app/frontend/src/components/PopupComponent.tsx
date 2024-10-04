@@ -1,12 +1,17 @@
 import React from "react";
 import Popup from "reactjs-popup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 interface PopupComponentProps {
   trigger: React.ReactNode;
   pageComponent: React.ReactNode;
 }
 
-const PopupComponent: React.FC<PopupComponentProps> = ({ trigger, pageComponent }) => (
+const PopupComponent: React.FC<PopupComponentProps> = ({
+  trigger,
+  pageComponent,
+}) => (
   <Popup trigger={trigger} modal nested>
     {(close: () => void) => (
       <div className="modal w-screen h-screen flex justify-center items-center">
@@ -19,7 +24,7 @@ const PopupComponent: React.FC<PopupComponentProps> = ({ trigger, pageComponent 
               type="button"
               onClick={() => close()}
             >
-              Back
+              <FontAwesomeIcon icon={faCircleChevronLeft} size="lg" /> Back
             </button>
           </footer>
         </div>

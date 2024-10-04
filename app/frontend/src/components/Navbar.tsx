@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, pageName }) => {
 
   return (
     <header className="sticky bg-wpi-red inset-x-0 top-0 h-16 px-8 flex items-center relative">
-      <h1 className="text-3xl font-bold absolute left-1/2 transform -translate-x-1/2 mb-4 pt-2">
+      <h1 className="text-3xl text-white font-bold absolute left-1/2 transform -translate-x-1/2 mb-4 pt-2">
         {pageName}
       </h1>
 
