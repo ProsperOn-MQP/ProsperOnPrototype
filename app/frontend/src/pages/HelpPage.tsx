@@ -32,7 +32,7 @@ const HelpPage: React.FC<HelpPageProps> = ({ isLoggedIn }) => {
           <p>This feature is unlocked after you login!</p>
           <PopupComponent
             trigger={
-              <button className="bg-black hover:bg-gray-700 text-white font-bold rounded focus:outline-none focus:shadow-outline">
+              <button className="bg-black hover:bg-gray-700 px-3 py-2 text-white font-bold rounded focus:outline-none focus:shadow-outline">
                 <FontAwesomeIcon icon={faArrowRightToBracket} /> Login
               </button>
             }

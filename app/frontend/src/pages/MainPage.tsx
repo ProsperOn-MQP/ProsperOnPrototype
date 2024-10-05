@@ -38,7 +38,7 @@ function MainPage() {
       </div>
       <footer className="absolute bottom-0 right-8 h-16 grid justify-items-end items-center">
         <button
-          className="bg-wpi-red hover:bg-red-700 w-12 h-12 focus:outline-none	fixed rounded-full flex justify-center items-center"
+          className="bg-wpi-red hover:bg-red-800 w-12 h-12 focus:outline-none	fixed rounded-full flex justify-center items-center"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => setShowComponent(!showComponent)}

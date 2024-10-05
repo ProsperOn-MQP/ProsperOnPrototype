@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MessageBox from "./MessageBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 const port = process.env.PORT || 5001;
 const serverURL = process.env.SERVER_URL || `http://localhost:${port}`;
@@ -88,7 +90,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
   };
 
   return (
-    <div className="flex flex-col absolute origin-center w-full h-full border-solid border-1 border-neutral-300 bg-neutral-300 rounded-lg shadow-lg bottom-0">
+    <div className="flex flex-col absolute origin-center w-full h-full border-solid border-1 bg-neutral-200 rounded-lg shadow-lg bottom-0">
       <div className="flex-grow overflow-y-auto">
         <div className=" overflow-y-auto flex-col">
           <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
@@ -113,10 +115,10 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
           onKeyDown={handleKeyDown}
         />
         <button
-          className="bg-white hover:bg-gray-400 w-1/5 text-gray-900 rounded font-bold py-2 px-3 focus:outline-none focus:shadow-outline"
+          className="bg-black hover:bg-gray-700 px-3 py-2 text-white rounded font-bold focus:outline-none focus:shadow-outline"
           onClick={handleSend}
         >
-          Send
+          <FontAwesomeIcon icon={faCircleArrowUp} size="lg" /> Send
         </button>
       </div>
     </div>
