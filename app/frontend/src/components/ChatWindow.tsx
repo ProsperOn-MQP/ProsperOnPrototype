@@ -115,10 +115,10 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
           onKeyDown={handleKeyDown}
         />
         <button
-          className="bg-black hover:bg-gray-700 px-3 py-2 text-white rounded font-bold focus:outline-none focus:shadow-outline"
+          className="bg-black hover:bg-gray-700 px-3 py-2 flex-col text-white text-xs rounded font-bold focus:outline-none focus:shadow-outline"
           onClick={handleSend}
         >
-          <FontAwesomeIcon icon={faCircleArrowUp} size="lg" /> Send
+          <FontAwesomeIcon icon={faCircleArrowUp} size="2x" />
         </button>
       </div>
     </div>
