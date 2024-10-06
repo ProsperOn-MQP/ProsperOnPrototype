@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar.tsx";
 import ChatWindow from "../components/ChatWindow.tsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmile, faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
 import Syllabus from "../components/Syllabus.tsx";
@@ -19,6 +19,8 @@ function MainPage() {
     setSuggestion(selectedText);
     setShowComponent(true);
   };
+
+  useEffect;
 
   return (
     <div>
