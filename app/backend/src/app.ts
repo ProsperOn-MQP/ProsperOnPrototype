@@ -1,23 +1,22 @@
-// Creates an router for the overall application
+// Creates a router for the overall application
+import cookieParser from "cookie-parser";
 import cors from "cors";
-import express, { Request, Response, json } from "express";
-import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import express, { Request, Response, json } from "express";
 import mongoose from "mongoose";
 import authenticationRouter from "./routers/authentication.js";
 import chatbotRouter from "./routers/chatbot.js";
 
-// Configures environmental file to be used globally
-dotenv.config();
+// Load environmental variables from env file
+dotenv.config({ path: "../../.env" });
 
 const app = express();
-app.use(json()); // Converts request bodies to json format.
-app.use(cors()); // Allows a program to make requests to different URIs.
-app.use(bodyParser.json());
+app.use(json()); // converts request bodies to json format
+app.use(cookieParser(process.env.COOKIE_KEY)); // populates the requests between client and server with cookie
+app.use(cors()); // allows a program to make requests to different URLs
 
 app.use("/", authenticationRouter);
 app.use("/", chatbotRouter);
-
 
 interface ChatLog {
   message: string;
