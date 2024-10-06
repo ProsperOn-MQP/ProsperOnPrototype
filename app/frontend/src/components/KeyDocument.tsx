@@ -13,7 +13,8 @@ const KeyDocument: React.FC<KeyDocumentProps> = ({ text, onOpenChat }) => {
     setIsHovered(true);
     const timeout = setTimeout(() => {
       onOpenChat();
-    }, 2000);
+      console.log("held");
+    }, 1000);
     setHoldTimeout(timeout);
   };
 
@@ -22,6 +23,8 @@ const KeyDocument: React.FC<KeyDocumentProps> = ({ text, onOpenChat }) => {
     if (holdTimeout) {
       clearTimeout(holdTimeout);
       setHoldTimeout(null);
+    } else {
+      onOpenChat();
     }
   };
 

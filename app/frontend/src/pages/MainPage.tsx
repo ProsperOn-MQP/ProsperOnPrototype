@@ -23,6 +23,17 @@ function MainPage() {
     }
   };
 
+  function ShowChatbot({ suggestion }: { suggestion: string }) {
+    return (
+      <div className="w-auto h-auto">
+        <ChatWindow
+          suggestion={suggestion}
+          onChatClose={() => console.log(false)}
+        />
+      </div>
+    );
+  }
+
   return (
     <div>
       <div>
@@ -35,6 +46,7 @@ function MainPage() {
           <Syllabus
             onOpenChat={() => {
               setShowComponent(true);
+              console.log("true");
             }}
           />
         </div>
@@ -59,14 +71,6 @@ function MainPage() {
           />
         </button>
       </footer>
-    </div>
-  );
-}
-
-function ShowChatbot({ suggestion }: { suggestion: string }) {
-  return (
-    <div className="w-auto h-auto">
-      <ChatWindow suggestion={suggestion} />
     </div>
   );
 }

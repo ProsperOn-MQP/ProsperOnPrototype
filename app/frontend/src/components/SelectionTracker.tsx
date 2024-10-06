@@ -42,10 +42,10 @@ const SelectionTracker: React.FC<SelectionTrackerProps> = ({
     handleSelectionChange();
   };
 
-  const handleRightClick = (event: MouseEvent) => {
+  /*   const handleRightClick = (event: MouseEvent) => {
     event.preventDefault();
     handleSelectionChange();
-  };
+  }; */
 
   const handleClickOnStrong = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
@@ -58,12 +58,12 @@ const SelectionTracker: React.FC<SelectionTrackerProps> = ({
 
   useEffect(() => {
     document.addEventListener("dblclick", handleDoubleClick);
-    document.addEventListener("contextmenu", handleRightClick);
+    //document.addEventListener("contextmenu", handleRightClick);
     document.addEventListener("click", handleClickOnStrong);
 
     return () => {
       document.removeEventListener("dblclick", handleDoubleClick);
-      document.removeEventListener("contextmenu", handleRightClick);
+      //document.removeEventListener("contextmenu", handleRightClick);
       document.removeEventListener("click", handleClickOnStrong);
     };
   }, []);

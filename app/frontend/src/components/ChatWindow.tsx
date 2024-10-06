@@ -14,26 +14,30 @@ interface message {
 
 interface ChatbotProps {
   suggestion?: string;
+  onChatClose: () => void;
 }
 
-const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
+const ChatWindow: React.FC<ChatbotProps> = ({
+  suggestion = "",
+  onChatClose,
+}) => {
   const [userContent, setUserContent] = useState<string>("");
   const [chat, setChat] = useState<message[]>([]);
 
   useEffect(() => {
-    const getMessages = async() => {
+    const getMessages = async () => {
       const response = await axios.get(
-        "http://localhost:5001/api/chatbot/fetchMessages", {
+        "http://localhost:5001/api/chatbot/fetchMessages",
+        {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-          }
+          },
         }
       );
       setChat(response.data);
-    }
+    };
     getMessages();
-  
   }, []);
 
   async function handleSend() {
@@ -53,7 +57,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-          }
+          },
         }
       );
 
@@ -85,6 +89,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
 
   return (
     <div className="flex flex-col absolute origin-center w-full h-full border-solid border-1 bg-neutral-200 rounded-lg shadow-lg bottom-0">
+      <div></div>
       <div className="flex-grow overflow-y-auto">
         <div className=" overflow-y-auto flex-col">
           <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
