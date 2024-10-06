@@ -83,7 +83,7 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          className="bg-wpi-red hover:bg-red-700 text-white text-size-lg font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-wpi-red hover:bg-gradient-to-b hover:from-wpi-red hover:to-red-800 text-white text-size-lg font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Login
