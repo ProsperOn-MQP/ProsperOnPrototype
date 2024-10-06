@@ -106,7 +106,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({
 
       <div className="sticky bottom-0 flex h-16 py-2 px-3">
         <input
-          className="bg-white border rounded w-4/5 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="bg-white border rounded w-5/6 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           placeholder={`Tell me about ${suggestion}`}
           value={userContent}
@@ -114,10 +114,10 @@ const ChatWindow: React.FC<ChatbotProps> = ({
           onKeyDown={handleKeyDown}
         />
         <button
-          className="bg-black hover:bg-gray-700 px-3 py-2 text-white rounded font-bold focus:outline-none focus:shadow-outline"
+          className="bg-black hover:bg-gray-700 w-1/6 px-3 py-2 flex-col text-white text-xs rounded font-bold focus:outline-none focus:shadow-outline"
           onClick={handleSend}
         >
-          <FontAwesomeIcon icon={faCircleArrowUp} size="lg" /> Send
+          <FontAwesomeIcon icon={faCircleArrowUp} size="2x" />
         </button>
       </div>
     </div>
