@@ -6,7 +6,7 @@
     "client": "cd app/frontend && npm run dev",
     "server": "cd app/backend && npm run build && node .",
     "python": "cd app/backend/src/python && python app.py",
-    "app": "concurrently \"npm run client\" \"npm run server\" \"npm run python\"",
+    "app": "concurrently \"npm run client\" \"npm run server\"",
     "build": "concurrently \"cd app/backend && npm run build\" \"cd app/frontend && npm run build \"",
     "start": "concurrently \"cd app/backend && node .\" \"cd app/frontend && npm run host  \""
   },
@@ -37,6 +37,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.0",
     "postcss": "^8.4.47",
     "react": "^18.3.1",
