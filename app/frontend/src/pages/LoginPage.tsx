@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
-const port = process.env.PORT || 5001;
-const serverURL = process.env.SERVER_URL || `http://localhost:${port}`;
-
 function LoginPage() {
   const navigate = useNavigate();
 
@@ -16,12 +13,11 @@ function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("URI: " + serverURL);
-
+    console.log(process.env.SERVER_URL);
     // Authenticate login
     try {
       const response = await axios.post(
-        `${serverURL}/login`,
+        "http://localhost:5001/login",
         {
           email: username,
           password: password,
