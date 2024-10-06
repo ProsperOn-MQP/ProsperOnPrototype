@@ -1,6 +1,6 @@
-import React from "react";
+import KeyDocument from "./KeyDocument"; // Adjust the path as necessary
 
-const Syllabus: React.FC = () => {
+function Syllabus({ onOpenChat }: { onOpenChat: () => void }) {
   return (
     <div
       id="content"
@@ -30,7 +30,7 @@ const Syllabus: React.FC = () => {
           <tbody>
             <tr>
               <td style={{ width: "15.6282%" }}>
-                <strong>Lectures</strong>
+                <KeyDocument text="Lectures" onOpenChat={onOpenChat} />
               </td>
               <td style={{ width: "84.2232%" }}>
                 Unity Hall 520 from 6pm to 7pm. Last day of class will be 6pm to
@@ -39,7 +39,7 @@ const Syllabus: React.FC = () => {
             </tr>
             <tr>
               <td style={{ width: "15.6282%" }}>
-                <strong>Instructor</strong>
+                <KeyDocument text="Instructor" onOpenChat={onOpenChat} />
               </td>
               <td style={{ width: "84.2232%" }}>
                 Prof. Wilson Wong, PhD, MBA (he/him/his)
@@ -47,22 +47,23 @@ const Syllabus: React.FC = () => {
             </tr>
             <tr>
               <td style={{ width: "15.6282%" }}>
-                <strong>Email</strong>
+                <KeyDocument text="Email" onOpenChat={onOpenChat} />
               </td>
               <td style={{ width: "84.2232%" }}>
                 <a href="mailto:wwong2@wpi.edu">wwong2@wpi.edu</a> (note the{" "}
-                <strong>2</strong> in the email address)
+                <KeyDocument text="2" onOpenChat={onOpenChat} /> in the email
+                address)
               </td>
             </tr>
             <tr>
               <td style={{ width: "15.6282%" }}>
-                <strong>Office</strong>
+                <KeyDocument text="Office" onOpenChat={onOpenChat} />
               </td>
               <td style={{ width: "84.2232%" }}>Fuller 132</td>
             </tr>
             <tr>
               <td style={{ width: "15.6282%" }}>
-                <strong>Office Hours</strong>
+                <KeyDocument text="Office Hours" onOpenChat={onOpenChat} />
               </td>
               <td style={{ width: "84.2232%" }}>
                 T 7-7:30pm after class (Unity Hall 520)
@@ -82,7 +83,7 @@ const Syllabus: React.FC = () => {
             </tr>
             <tr>
               <td style={{ width: "15.6282%" }}>
-                <strong>GLA</strong>
+                <KeyDocument text="GLA" onOpenChat={onOpenChat} />
               </td>
               <td style={{ width: "84.2232%" }}>
                 Ana Merlo Gonzalez. Office Hours: MR 4-6pm (Washburn 220)
@@ -98,25 +99,27 @@ const Syllabus: React.FC = () => {
         </p>
         <ol>
           <li>
-            <strong>Discord Channels.</strong> Please use the course Discord
-            channels as we will be monitoring those daily, plus other students
-            could likely benefit from your questions and our answers. Other
-            students may even be able to answer your questions.
+            <KeyDocument text="Discord Channels." onOpenChat={onOpenChat} />{" "}
+            Please use the course Discord channels as we will be monitoring
+            those daily, plus other students could likely benefit from your
+            questions and our answers. Other students may even be able to answer
+            your questions.
           </li>
           <li>
-            <strong>Discord DM.</strong> You may direct message me on Discord
-            for personal or private matters such as illness, ADA accommodations,
-            etc. Note: contacting me through Discord will result in a far faster
-            response than through email!
+            <KeyDocument text="Discord DM." onOpenChat={onOpenChat} /> You may
+            direct message me on Discord for personal or private matters such as
+            illness, ADA accommodations, etc. Note: contacting me through
+            Discord will result in a far faster response than through email!
           </li>
           <li>
-            <strong>Office hours.</strong> Go to the instructor and GLA office
-            hours as they are set up solely for this purpose.
+            <KeyDocument text="Office hours." onOpenChat={onOpenChat} /> Go to
+            the instructor and GLA office hours as they are set up solely for
+            this purpose.
           </li>
         </ol>
 
         <p>
-          <strong>Course Description</strong>
+          <KeyDocument text="Course Description" onOpenChat={onOpenChat} />
           <br />
           This PQP will get you ready and prepared for your Wall Street FinTech
           Project in B-Term. We will focus on getting you set up and connected
@@ -128,7 +131,7 @@ const Syllabus: React.FC = () => {
         </p>
 
         <p>
-          <strong>Course Objectives</strong>
+          <KeyDocument text="Course Objectives" onOpenChat={onOpenChat} />
           <br />
           The specific topics you will learn in this PQP course include:
         </p>
@@ -160,7 +163,7 @@ const Syllabus: React.FC = () => {
         </ol>
 
         <p>
-          <strong>Course Methodology</strong>
+          <KeyDocument text="Course Methodology" onOpenChat={onOpenChat} />
           <br />
           Lectures, readings, videos, and a term project will be used to present
           the relevant material to the class. The final course grade will be
@@ -198,10 +201,10 @@ const Syllabus: React.FC = () => {
             </tr>
             <tr>
               <td style={{ width: "84.3094%" }}>
-                <strong>Total</strong>
+                <KeyDocument text="Total" onOpenChat={onOpenChat} />
               </td>
               <td style={{ width: "15.542%", textAlign: "right" }}>
-                <strong>100%</strong>
+                <KeyDocument text="100%" onOpenChat={onOpenChat} />
               </td>
             </tr>
           </tbody>
@@ -215,11 +218,19 @@ const Syllabus: React.FC = () => {
         </p>
         <p>
           Check your grades on Canvas for accuracy. Discrepancies must be
-          discussed with me <strong>before the end of the course</strong>.
+          discussed with me{" "}
+          <KeyDocument
+            text="before the end of the course"
+            onOpenChat={onOpenChat}
+          />
+          .
         </p>
 
         <p>
-          <strong>Meeting and Lecture Etiquette</strong>
+          <KeyDocument
+            text="Meeting and Lecture Etiquette"
+            onOpenChat={onOpenChat}
+          />
           <br />
           The following rules are those used in formal company meetings and will
           be useful when you meet with company employees. We will adopt these
@@ -240,7 +251,10 @@ const Syllabus: React.FC = () => {
         </ul>
 
         <p>
-          <strong>Business School Mission Statement</strong>
+          <KeyDocument
+            text="Business School Mission Statement"
+            onOpenChat={onOpenChat}
+          />
           <br />
           The WPI Business School develops adaptive leaders who create
           sustainable solutions, deliver globally responsible impact, and
@@ -249,7 +263,10 @@ const Syllabus: React.FC = () => {
         </p>
 
         <p>
-          <strong>Americans with Disabilities Act</strong>
+          <KeyDocument
+            text="Americans with Disabilities Act"
+            onOpenChat={onOpenChat}
+          />
           <br />
           Worcester Polytechnic Institute abides by Section 504 of the
           Rehabilitation Act of 1973 and the Americans with Disabilities Act of
@@ -258,7 +275,7 @@ const Syllabus: React.FC = () => {
         </p>
 
         <p>
-          <strong>Social Justice</strong>
+          <KeyDocument text="Social Justice" onOpenChat={onOpenChat} />
           <br />I strongly believe every student deserves a chance to learn in
           an equitable and safe environment.
         </p>
@@ -274,13 +291,11 @@ const Syllabus: React.FC = () => {
               <th>Details</th>
             </tr>
           </thead>
-          <tbody>
-            {/* You can dynamically render course summary items here */}
-          </tbody>
+          <tbody>{}</tbody>
         </table>
       </div>
     </div>
   );
-};
+}
 
 export default Syllabus;
