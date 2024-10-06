@@ -27,9 +27,10 @@ function LoginPage() {
           password: password,
         },
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-          },
+          }
         }
       );
       if (response.data.success === true) {

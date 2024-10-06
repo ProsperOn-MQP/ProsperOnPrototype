@@ -7,10 +7,11 @@ const validateLogin = async (req, res) => {
 
   if (foundStudent != undefined) {
     if (foundStudent.email == req.body.email && foundStudent.password == req.body.password) {
-      res.cookie("authCookie", createToken(foundStudent.email), {
+      res.cookie("authenticationToken", createToken(foundStudent.email), {
         httpOnly: true,
         secure: true,
-        signed: true
+        signed: true,
+        sameSite: "None"
       });
       return res.status(200).json({
         success: true,

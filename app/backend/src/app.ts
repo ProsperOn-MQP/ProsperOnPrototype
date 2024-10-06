@@ -1,4 +1,3 @@
-// Creates a router for the overall application
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -10,11 +9,18 @@ import chatbotRouter from "./routers/chatbot.js";
 // Load environmental variables from env file
 dotenv.config({ path: "../../.env" });
 
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}
+
+// Sets up express application
 const app = express();
 app.use(json()); // converts request bodies to json format
 app.use(cookieParser(process.env.COOKIE_KEY)); // populates the requests between client and server with cookie
-app.use(cors()); // allows a program to make requests to different URLs
+app.use(cors(corsOptions)); // allows a backend to communicate with frontend from different URLs
 
+// Set up minirouters to handle various services
 app.use("/", authenticationRouter);
 app.use("/", chatbotRouter);
 

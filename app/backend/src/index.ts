@@ -3,7 +3,7 @@ import app from "./app.js";
 import { connectToDatabase } from "./db/connection.js";
 import initializeDatabase from "./db/initialize.js";
 
-const port = process.env.PORT || 5001;
+const port = process.env.SERVER_PORT || 5001;
 
 // Connect to DB and start HTTP server
 connectToDatabase()

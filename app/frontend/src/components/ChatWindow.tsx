@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import MessageBox from "./MessageBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,9 +57,10 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
           message: { user: "user", content: userContent },
         },
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-          },
+          }
         }
       );
 
