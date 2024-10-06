@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import MessageBox from "./MessageBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,28 +20,21 @@ const ChatWindow: React.FC<ChatbotProps> = ({ suggestion = "" }) => {
   const [userContent, setUserContent] = useState<string>("");
   const [chat, setChat] = useState<message[]>([]);
 
-  // useEffect(() => {
-  //   const fetchChatLogs = async () => {
-  //     try {
-  //       const response = await axios.get(`${serverURL}/chat/all`);
-  //       setChat(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching chat logs:", error);
-  //     }
-  //   };
-
-  //   const openSite = async () => {
-  //     try {
-  //       const response = await axios.get(`${serverURL}/`);
-  //       console.log(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching site:", error);
-  //     }
-  //   };
-
-  //   openSite();
-  //   fetchChatLogs();
-  // }, []);
+  useEffect(() => {
+    const getMessages = async() => {
+      const response = await axios.get(
+        "http://localhost:5001/api/chatbot/fetchMessages", {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          }
+        }
+      );
+      setChat(response.data);
+    }
+    getMessages();
+  
+  }, []);
 
   async function handleSend() {
     // Remove leading and trailing white spaces
