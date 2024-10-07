@@ -14,7 +14,7 @@ const KeyDocument: React.FC<KeyDocumentProps> = ({ text, onOpenChat }) => {
     const timeout = setTimeout(() => {
       onOpenChat();
       console.log("held");
-    }, 1000);
+    }, 600);
     setHoldTimeout(timeout);
   };
 

@@ -11,9 +11,9 @@ function MainPage() {
   const [isHovered, setIsHovered] = useState(false);
 
   // handle chatbot button
-  const [showComponent, setShowComponent] = useState(false);
   const [suggestion, setSuggestion] = useState<string>("");
   const [isRotated, setIsRotated] = useState(false); // Track the rotation state
+  const [showComponent, setShowComponent] = useState(false);
 
   const handleSelection = (selectedText: string) => {
     setSuggestion(selectedText);
@@ -22,17 +22,6 @@ function MainPage() {
       setTimeout(() => setIsRotated(false), 500);
     }
   };
-
-  function ShowChatbot({ suggestion }: { suggestion: string }) {
-    return (
-      <div className="w-auto h-auto">
-        <ChatWindow
-          suggestion={suggestion}
-          onChatClose={() => console.log(false)}
-        />
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -45,8 +34,7 @@ function MainPage() {
         <div className="flex items-center justify-center">
           <Syllabus
             onOpenChat={() => {
-              setShowComponent(true);
-              console.log("true");
+              if (!showComponent) setShowComponent(true);
             }}
           />
         </div>
@@ -71,6 +59,16 @@ function MainPage() {
           />
         </button>
       </footer>
+    </div>
+  );
+}
+function ShowChatbot({ suggestion }: { suggestion: string }) {
+  return (
+    <div className="w-auto h-auto">
+      <ChatWindow
+        suggestion={suggestion}
+        onChatClose={() => console.log(false)}
+      />
     </div>
   );
 }
