@@ -87,7 +87,7 @@ app.post("/api/pageContext", async (req: Request, res: Response) => {
   const { userId, interactions } = req.body;
 
   if (!userId || !interactions) {
-    return res
+    res
       .status(400)
       .json({ error: "User ID and interactions are required." });
   }
@@ -116,7 +116,7 @@ app.get("/chat/all", async (req: Request, res: Response) => {
 
 // Get request for "Hello"
 app.get("/hello", (req, res) => {
-  return res.send("Hello");
+  res.send("Hello");
 });
 
 export default app;

@@ -5,6 +5,7 @@ import Student from "../models/Student.js";
 const fetchMessages = async (req, res) => {
   // Decode cookie for email address
   const userEmail = decodeToken(req.signedCookies.authenticationToken).email;
+  console.log(userEmail);
 
   // Query database for chatlogs of given email address
   const user = await Student.findOne({ email: userEmail })
