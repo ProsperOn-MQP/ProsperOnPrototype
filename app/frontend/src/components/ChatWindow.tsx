@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import MessageBox from "./MessageBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faCircleArrowUp, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const port = process.env.PORT || 5001;
 const serverURL = process.env.SERVER_URL || `http://localhost:${port}`;
@@ -28,7 +28,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({
   useEffect(() => {
     const getMessages = async () => {
       const response = await axios.get(
-        `${serverURL}/api/chatbot/fetchMessages`,
+        `${serverURL}/api/chatbot/fetchmessages`,
         {
           withCredentials: true,
           headers: {
@@ -93,8 +93,15 @@ const ChatWindow: React.FC<ChatbotProps> = ({
 
   return (
     <div className="flex flex-col absolute origin-center w-full h-full border-solid border-1 bg-neutral-200 rounded-lg shadow-lg bottom-0">
+      <button
+        className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+        onClick={onChatClose}
+      >
+        <FontAwesomeIcon icon={faTimes} size="lg" />
+      </button>
+
       <div className="flex-grow overflow-y-auto" ref={chatContainerRef}>
-        <div className=" overflow-y-auto flex-col">
+        <div className="overflow-y-auto flex-col">
           <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
             {chat.map((message, index) => (
               <MessageBox
