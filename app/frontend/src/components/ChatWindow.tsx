@@ -28,7 +28,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({
   useEffect(() => {
     const getMessages = async () => {
       const response = await axios.get(
-        "http://localhost:5001/api/chatbot/fetchMessages",
+        `${serverURL}/api/chatbot/fetchMessages`,
         {
           withCredentials: true,
           headers: {
