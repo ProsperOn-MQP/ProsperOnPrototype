@@ -42,7 +42,6 @@ const ChatWindow: React.FC<ChatbotProps> = ({
   }, []);
 
   useEffect(() => {
-    // Scroll to the bottom when new messages are added
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop =
         chatContainerRef.current.scrollHeight;
