@@ -1,9 +1,13 @@
+import decodeToken from "../utility/decodeToken.js";
 import OpenAI from "openai";
 import Student from "../models/Student.js";
 
 const generateResponse = async (req, res) => {
+    // Decode cookie for email address
+    const userEmail = decodeToken(req.signedCookies.authenticationToken).email;
+
     // Query database for chatlogs of the requesting user
-    const user = await Student.findOne({email: req.body.email}).select("chat").exec();
+    const user = await Student.findOne({email: userEmail}).select("chat").exec();
     if (!user) {
         return res.status(404).json({error: "User not found"});
     }

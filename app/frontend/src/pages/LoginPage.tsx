@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
-const port = process.env.PORT || 5001;
-const serverURL = process.env.SERVER_URL || `http://localhost:${port}`;
-
 function LoginPage() {
   const navigate = useNavigate();
 
@@ -16,20 +13,20 @@ function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("URI: " + serverURL);
-
+    console.log(process.env.SERVER_URL);
     // Authenticate login
     try {
       const response = await axios.post(
-        `${serverURL}/login`,
+        "http://localhost:5001/login",
         {
           email: username,
           password: password,
         },
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
-          },
+          }
         }
       );
       if (response.data.success === true) {
@@ -83,7 +80,7 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          className="bg-wpi-red hover:bg-red-700 text-white text-size-lg font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-wpi-red hover:bg-gradient-to-b hover:from-wpi-red hover:to-red-800 text-white text-size-lg font-bold w-full py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Login

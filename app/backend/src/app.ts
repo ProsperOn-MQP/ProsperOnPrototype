@@ -1,23 +1,28 @@
-// Creates an router for the overall application
+import cookieParser from "cookie-parser";
 import cors from "cors";
-import express, { Request, Response, json } from "express";
-import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import express, { Request, Response, json } from "express";
 import mongoose from "mongoose";
 import authenticationRouter from "./routers/authentication.js";
 import chatbotRouter from "./routers/chatbot.js";
 
-// Configures environmental file to be used globally
-dotenv.config();
+// Load environmental variables from env file
+dotenv.config({ path: "../../.env" });
 
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}
+
+// Sets up express application
 const app = express();
-app.use(json()); // Converts request bodies to json format.
-app.use(cors()); // Allows a program to make requests to different URIs.
-app.use(bodyParser.json());
+app.use(json()); // converts request bodies to json format
+app.use(cookieParser(process.env.COOKIE_KEY)); // populates the requests between client and server with cookie
+app.use(cors(corsOptions)); // allows a backend to communicate with frontend from different URLs
 
+// Set up minirouters to handle various services
 app.use("/", authenticationRouter);
 app.use("/", chatbotRouter);
-
 
 interface ChatLog {
   message: string;
@@ -82,7 +87,7 @@ app.post("/api/pageContext", async (req: Request, res: Response) => {
   const { userId, interactions } = req.body;
 
   if (!userId || !interactions) {
-    return res
+    res
       .status(400)
       .json({ error: "User ID and interactions are required." });
   }
@@ -111,7 +116,7 @@ app.get("/chat/all", async (req: Request, res: Response) => {
 
 // Get request for "Hello"
 app.get("/hello", (req, res) => {
-  return res.send("Hello");
+  res.send("Hello");
 });
 
 export default app;
