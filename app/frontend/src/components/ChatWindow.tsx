@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import MessageBox from "./MessageBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,6 +23,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({
 }) => {
   const [userContent, setUserContent] = useState<string>("");
   const [chat, setChat] = useState<message[]>([]);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -40,13 +41,19 @@ const ChatWindow: React.FC<ChatbotProps> = ({
     getMessages();
   }, []);
 
+  useEffect(() => {
+    // Scroll to the bottom when new messages are added
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
+    }
+  }, [chat]);
+
   async function handleSend() {
-    // Remove leading and trailing white spaces
     const messageContent = userContent.trim();
     if (messageContent === "") return;
 
     try {
-      // Send message to server, where server will generate a response
       const response = await axios.post(
         `${serverURL}/api/chatbot/message`,
         {
@@ -61,8 +68,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({
         }
       );
 
-      // Reload chat
-      const updatedChat = chat;
+      const updatedChat = [...chat];
       updatedChat.push({ role: "user", content: userContent });
       updatedChat.push({
         role: response.data.role,
@@ -70,7 +76,6 @@ const ChatWindow: React.FC<ChatbotProps> = ({
       });
       setChat(updatedChat);
       setUserContent("");
-      console.log(chat);
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -89,8 +94,7 @@ const ChatWindow: React.FC<ChatbotProps> = ({
 
   return (
     <div className="flex flex-col absolute origin-center w-full h-full border-solid border-1 bg-neutral-200 rounded-lg shadow-lg bottom-0">
-      <div></div>
-      <div className="flex-grow overflow-y-auto">
+      <div className="flex-grow overflow-y-auto" ref={chatContainerRef}>
         <div className=" overflow-y-auto flex-col">
           <div style={{ flexGrow: 1, overflowY: "auto", padding: "10px" }}>
             {chat.map((message, index) => (

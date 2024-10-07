@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmile, faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
 import Syllabus from "../components/Syllabus.tsx";
 import SelectionTracker from "../components/SelectionTracker.tsx";
+import ShowChatbot from "../components/ShowChatBot.tsx";
 
 function MainPage() {
   // icons
@@ -62,7 +63,7 @@ function MainPage() {
     </div>
   );
 }
-function ShowChatbot({ suggestion }: { suggestion: string }) {
+/* function ShowChatbot({ suggestion }: { suggestion: string }) {
   return (
     <div className="w-auto h-auto">
       <ChatWindow
@@ -72,5 +73,5 @@ function ShowChatbot({ suggestion }: { suggestion: string }) {
     </div>
   );
 }
-
+ */
 export default MainPage;
