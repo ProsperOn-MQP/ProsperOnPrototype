@@ -10,7 +10,7 @@ import chatbotRouter from "./routers/chatbot.js";
 dotenv.config({ path: "../../.env" });
 
 const corsOptions = {
-  origin: "*",
+  origin: `${process.env.CLIENT_URL}`,
   credentials: true,
 };
 
