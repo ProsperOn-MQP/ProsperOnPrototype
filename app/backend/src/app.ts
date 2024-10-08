@@ -8,9 +8,16 @@ import chatbotRouter from "./routers/chatbot.js";
 
 // Load environmental variables from env file
 dotenv.config({ path: "../../.env" });
+const allowedOrigins = `${process.env.CLIENT_URL}`;
 
 const corsOptions = {
-  origin: `${process.env.CLIENT_URL}`,
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "OPTIONS"],
   credentials: true,
 };
