@@ -18,7 +18,7 @@ app.use(cookieParser(process.env.COOKIE_KEY)); // populates the requests between
 app.use(
   cors({
     origin: "https://prosperonprototype-production.up.railway.app",
-    //credentials: true,
+    credentials: true,
   })
 );
 // Set up minirouters to handle various services
