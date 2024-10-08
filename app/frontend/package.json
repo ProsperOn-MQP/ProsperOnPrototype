@@ -21,6 +21,7 @@
     "react-dom": "^18.3.1",
     "react-is": "^16.13.1",
     "react-router-dom": "^6.26.2",
+    "reactjs-popup": "^2.0.6",
     "vite": "^5.4.1"
   },
   "devDependencies": {
