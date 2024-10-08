@@ -10,24 +10,17 @@ import chatbotRouter from "./routers/chatbot.js";
 dotenv.config({ path: "../../.env" });
 const allowedOrigins = `${process.env.CLIENT_URL}`;
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "OPTIONS"],
-  credentials: true,
-};
-
 // Sets up express application
 const app = express();
 app.use(json()); // converts request bodies to json format
 app.use(cookieParser(process.env.COOKIE_KEY)); // populates the requests between client and server with cookie
-app.use(cors(corsOptions)); // allows a backend to communicate with frontend from different URLs
 
+app.use(
+  cors({
+    origin: "https://prosperonprototype-production.up.railway.app",
+    //credentials: true,
+  })
+);
 // Set up minirouters to handle various services
 app.use("/", authenticationRouter);
 app.use("/", chatbotRouter);
