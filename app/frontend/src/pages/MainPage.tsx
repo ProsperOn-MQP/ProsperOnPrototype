@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar.tsx";
-import ChatWindow from "../components/ChatWindow.tsx";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmile, faFaceLaugh } from "@fortawesome/free-solid-svg-icons";
