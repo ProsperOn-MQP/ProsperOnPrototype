@@ -10,9 +10,9 @@ import chatbotRouter from "./routers/chatbot.js";
 dotenv.config({ path: "../../.env" });
 
 const corsOptions = {
-  origin: process.env.CLIENT_URL,
-  credentials: true
-}
+  origin: "*",
+  credentials: true,
+};
 
 // Sets up express application
 const app = express();
@@ -83,11 +83,11 @@ app.post("/chat", async (req: Request, res: Response) => {
 });
 
 // Handle page context with user ID
-app.post("/api/pageContext", async (req: Request, res: Response) => {
+/* app.post("/api/pageContext", async (req: Request, res: Response) => {
   const { userId, interactions } = req.body;
 
   if (!userId || !interactions) {
-    res
+    return res
       .status(400)
       .json({ error: "User ID and interactions are required." });
   }
@@ -101,7 +101,7 @@ app.post("/api/pageContext", async (req: Request, res: Response) => {
     console.error("Error saving page context:", error);
     res.status(500).json({ error: "Failed to save page context." });
   }
-});
+}); */
 
 // Fetch all chat logs
 app.get("/chat/all", async (req: Request, res: Response) => {
@@ -114,11 +114,4 @@ app.get("/chat/all", async (req: Request, res: Response) => {
   }
 });
 
-// Get request for "Hello"
-app.get("/hello", (req, res) => {
-  res.send("Hello");
-});
-
 export default app;
-
-
