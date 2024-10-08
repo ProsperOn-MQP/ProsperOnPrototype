@@ -14,7 +14,7 @@ const HelpPage: React.FC<HelpPageProps> = ({ isLoggedIn }) => {
 
       {isLoggedIn ? (
         <div>
-          <h2 className="text-2xl font-bold">Openning the Chatbot</h2>
+          <h2 className="text-2xl font-bold">Opening the Chatbot</h2>
           <p>
             Click the red button in the bottom right corner to open/close the
             chatbot
@@ -23,7 +23,7 @@ const HelpPage: React.FC<HelpPageProps> = ({ isLoggedIn }) => {
           <h2 className="text-2xl font-bold">Syllabus Questions</h2>
           <p>
             Click-drag on the syllabus to highlight words you have a question
-            about, watch them automatically appear in the cahtbot input!
+            about, watch them automatically appear in the chatbot input!
           </p>
         </div>
       ) : (
