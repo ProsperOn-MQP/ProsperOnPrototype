@@ -10,7 +10,7 @@ connectToDatabase()
   .then(() => {
     initializeDatabase();
 
-    app.listen(port, "::", () =>
+    app.listen(port, "0.0.0.0", () =>
       console.log(
         `Server Open and connected to database. Listening on port ${port}`
       )
