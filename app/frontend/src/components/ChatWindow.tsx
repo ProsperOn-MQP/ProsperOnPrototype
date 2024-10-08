@@ -2,7 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import MessageBox from "./MessageBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleArrowUp, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleArrowUp /* , faTimes */,
+} from "@fortawesome/free-solid-svg-icons";
 
 const port = process.env.PORT || 5001;
 const serverURL = process.env.SERVER_URL || `http://localhost:${port}`;
@@ -19,7 +21,8 @@ interface ChatbotProps {
 
 const ChatWindow: React.FC<ChatbotProps> = ({
   suggestion = "",
-  onChatClose,
+  /*   onChatClose,
+   */
 }) => {
   const [userContent, setUserContent] = useState<string>("");
   const [chat, setChat] = useState<message[]>([]);
