@@ -15,7 +15,7 @@ interface NavbarProps {
   pageName: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, pageName }) => {
+const Navbar: React.FC<NavbarProps> = ({ isLoggedIn /* , pageName */ }) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 

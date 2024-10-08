@@ -42,6 +42,7 @@ const FocusContext: React.FC<FocusContextProps> = ({ userId }) => {
         : updatedInteractions;
     });
   };
+  console.log(interactions);
 
   const extractData = (target: HTMLElement): string => {
     const strongElement = target.querySelector("strong");
