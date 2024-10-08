@@ -11,6 +11,7 @@ dotenv.config({ path: "../../.env" });
 
 const corsOptions = {
   origin: `${process.env.CLIENT_URL}`,
+  methods: ["GET", "POST", "OPTIONS"],
   credentials: true,
 };
 
